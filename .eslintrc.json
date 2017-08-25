@@ -1,0 +1,10 @@
+{
+  "extends": "koality",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "it": true,
+    "expect": true
+  }
+}
