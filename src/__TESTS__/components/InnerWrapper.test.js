@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../App';
+import InnerWrapper from '../../components/InnerWrapper';
 
 it('renders correctly', () => {
-  const component = renderer.create(<App />).toJSON();
+  const component = renderer.create(<InnerWrapper />).toJSON();
   expect(component).toMatchSnapshot();
 });

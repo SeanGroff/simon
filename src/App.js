@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+// @flow
+import React from 'react';
+import styled from 'styled-components';
+import Simon from './components/Simon';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        {'Hello World'}
-      </div>
-    );
-  }
-}
+const App = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: DodgerBlue;
+`;
 
-export default App;
+export default (props: {}) =>
+  <App>
+    <Simon />
+  </App>;

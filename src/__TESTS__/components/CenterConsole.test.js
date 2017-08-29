@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../App';
+import CenterConsole from '../../components/CenterConsole';
 
 it('renders correctly', () => {
-  const component = renderer.create(<App />).toJSON();
+  const component = renderer.create(<CenterConsole />).toJSON();
   expect(component).toMatchSnapshot();
 });
