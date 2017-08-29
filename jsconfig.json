@@ -1,0 +1,6 @@
+{
+  // Allows Jest intellisense in VS Code using "@types/jest" and the Jest VS Code Extension
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
+}
