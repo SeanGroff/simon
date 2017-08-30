@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`should render a button with a green background 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,15 +8,15 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
-    <Unknown />
-    <Unknown />
-</styled.div>,
+  "node": <styled.div
+    clickable={false}
+    color="green"
+/>,
   "nodes": Array [
-    <styled.div>
-      <Unknown />
-      <Unknown />
-</styled.div>,
+    <styled.div
+      clickable={false}
+      color="green"
+/>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -24,14 +24,20 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Unknown />,
+      "_currentElement": <Button
+        clickable={false}
+        color="green"
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "clickable": false,
+          "color": "green",
+        },
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -52,15 +58,15 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <Unknown />
-          <Unknown />
-</styled.div>,
+        "_currentElement": <styled.div
+          clickable={false}
+          color="green"
+/>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <Unknown />
-          <Unknown />
-</styled.div>,
+        "_renderedOutput": <styled.div
+          clickable={false}
+          color="green"
+/>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,
@@ -72,6 +78,9 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown />,
+  "unrendered": <Button
+    clickable={false}
+    color="green"
+/>,
 }
 `;

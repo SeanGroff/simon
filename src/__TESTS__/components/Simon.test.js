@@ -1,8 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import Simon from '../../components/Simon';
 
 it('renders correctly', () => {
-  const component = renderer.create(<Simon />).toJSON();
+  const component = shallow(<Simon />);
   expect(component).toMatchSnapshot();
 });

@@ -1,5 +1,6 @@
 [ignore]
-.*/vscode/.*
+.*/.vscode/.*
+.*/flow-typed/.*
 .*/node_modules/styled-components/.*
 .*/node_modules/.*
 .*/public/.*

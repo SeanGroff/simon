@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders a counter display 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -8,15 +8,9 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
-    <Unknown />
-    <Unknown />
-</styled.div>,
+  "node": <styled.div />,
   "nodes": Array [
-    <styled.div>
-      <Unknown />
-      <Unknown />
-</styled.div>,
+    <styled.div />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -24,14 +18,20 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Unknown />,
+      "_currentElement": <Counter
+        count={0}
+        on={false}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "count": 0,
+          "on": false,
+        },
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -52,15 +52,9 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <Unknown />
-          <Unknown />
-</styled.div>,
+        "_currentElement": <styled.div />,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <Unknown />
-          <Unknown />
-</styled.div>,
+        "_renderedOutput": <styled.div />,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,
@@ -72,6 +66,9 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown />,
+  "unrendered": <Counter
+    count={0}
+    on={false}
+/>,
 }
 `;

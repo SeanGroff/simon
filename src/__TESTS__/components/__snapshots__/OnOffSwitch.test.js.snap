@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`renders a toggle switch correctly 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -9,13 +9,17 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <Unknown />
-    <Unknown />
+    <styled.div
+        off={true}
+        onClick={false}
+    />
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <Unknown />
-      <Unknown />
+      <styled.div
+            off={true}
+            onClick={false}
+      />
 </styled.div>,
   ],
   "options": Object {},
@@ -24,14 +28,18 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Unknown />,
+      "_currentElement": <OnOffSwitch
+        off={true}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "off": true,
+        },
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -53,13 +61,17 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <Unknown />
-          <Unknown />
+          <styled.div
+                    off={true}
+                    onClick={false}
+          />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <Unknown />
-          <Unknown />
+          <styled.div
+                    off={true}
+                    onClick={false}
+          />
 </styled.div>,
       },
       "_renderedNodeType": 1,
@@ -72,6 +84,8 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Unknown />,
+  "unrendered": <OnOffSwitch
+    off={true}
+/>,
 }
 `;

@@ -1,7 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="sc-bdVaJa crGigL"
-/>
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <styled.div>
+    <styled.div>
+        <Button
+            clickable={false}
+            color="#00A74A"
+            topLeft={true}
+        />
+        <Button
+            clickable={false}
+            color="#9F0F17"
+            topRight={true}
+        />
+    </styled.div>
+    <styled.div>
+        <Button
+            bottomLeft={true}
+            clickable={false}
+            color="#CCA707"
+        />
+        <Button
+            bottomRight={true}
+            clickable={false}
+            color="#094A8F"
+        />
+    </styled.div>
+</styled.div>,
+  "nodes": Array [
+    <styled.div>
+      <styled.div>
+            <Button
+                  clickable={false}
+                  color="#00A74A"
+                  topLeft={true}
+            />
+            <Button
+                  clickable={false}
+                  color="#9F0F17"
+                  topRight={true}
+            />
+      </styled.div>
+      <styled.div>
+            <Button
+                  bottomLeft={true}
+                  clickable={false}
+                  color="#CCA707"
+            />
+            <Button
+                  bottomRight={true}
+                  clickable={false}
+                  color="#094A8F"
+            />
+      </styled.div>
+</styled.div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 2,
+      "_context": Object {},
+      "_currentElement": <Unknown />,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StatelessComponent {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {},
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <styled.div>
+          <styled.div>
+                    <Button
+                              clickable={false}
+                              color="#00A74A"
+                              topLeft={true}
+                    />
+                    <Button
+                              clickable={false}
+                              color="#9F0F17"
+                              topRight={true}
+                    />
+          </styled.div>
+          <styled.div>
+                    <Button
+                              bottomLeft={true}
+                              clickable={false}
+                              color="#CCA707"
+                    />
+                    <Button
+                              bottomRight={true}
+                              clickable={false}
+                              color="#094A8F"
+                    />
+          </styled.div>
+</styled.div>,
+        "_debugID": 2,
+        "_renderedOutput": <styled.div>
+          <styled.div>
+                    <Button
+                              clickable={false}
+                              color="#00A74A"
+                              topLeft={true}
+                    />
+                    <Button
+                              clickable={false}
+                              color="#9F0F17"
+                              topRight={true}
+                    />
+          </styled.div>
+          <styled.div>
+                    <Button
+                              bottomLeft={true}
+                              clickable={false}
+                              color="#CCA707"
+                    />
+                    <Button
+                              bottomRight={true}
+                              clickable={false}
+                              color="#094A8F"
+                    />
+          </styled.div>
+</styled.div>,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Unknown />,
+}
 `;

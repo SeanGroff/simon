@@ -1,8 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import CenterConsole from '../../components/CenterConsole';
 
 it('renders correctly', () => {
-  const component = renderer.create(<CenterConsole />).toJSON();
+  const component = shallow(<CenterConsole />);
   expect(component).toMatchSnapshot();
 });

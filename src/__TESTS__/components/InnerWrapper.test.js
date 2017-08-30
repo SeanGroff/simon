@@ -1,8 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import InnerWrapper from '../../components/InnerWrapper';
 
 it('renders correctly', () => {
-  const component = renderer.create(<InnerWrapper />).toJSON();
+  const component = shallow(<InnerWrapper />);
   expect(component).toMatchSnapshot();
 });
