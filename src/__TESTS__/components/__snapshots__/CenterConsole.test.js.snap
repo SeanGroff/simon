@@ -34,6 +34,7 @@ ShallowWrapper {
                     start
                 </styled.label>
                 <StartStrictButton
+                    power={undefined}
                     startButton={true}
                 />
             </styled.span>
@@ -44,6 +45,7 @@ ShallowWrapper {
                     strict
                 </styled.label>
                 <StartStrictButton
+                    power={undefined}
                     startButton={false}
                 />
             </styled.span>
@@ -93,6 +95,7 @@ ShallowWrapper {
                               start
                         </styled.label>
                         <StartStrictButton
+                              power={undefined}
                               startButton={true}
                         />
                   </styled.span>
@@ -103,6 +106,7 @@ ShallowWrapper {
                               strict
                         </styled.label>
                         <StartStrictButton
+                              power={undefined}
                               startButton={false}
                         />
                   </styled.span>
@@ -186,6 +190,7 @@ ShallowWrapper {
                                                   start
                                         </styled.label>
                                         <StartStrictButton
+                                                  power={undefined}
                                                   startButton={true}
                                         />
                               </styled.span>
@@ -196,6 +201,7 @@ ShallowWrapper {
                                                   strict
                                         </styled.label>
                                         <StartStrictButton
+                                                  power={undefined}
                                                   startButton={false}
                                         />
                               </styled.span>
@@ -245,6 +251,7 @@ ShallowWrapper {
                                                   start
                                         </styled.label>
                                         <StartStrictButton
+                                                  power={undefined}
                                                   startButton={true}
                                         />
                               </styled.span>
@@ -255,6 +262,7 @@ ShallowWrapper {
                                                   strict
                                         </styled.label>
                                         <StartStrictButton
+                                                  power={undefined}
                                                   startButton={false}
                                         />
                               </styled.span>

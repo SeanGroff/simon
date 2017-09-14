@@ -8,11 +8,15 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div
+  "node": <styled.button
+    disabled={true}
+    onClick={[Function]}
     startButton={true}
 />,
   "nodes": Array [
-    <styled.div
+    <styled.button
+      disabled={true}
+      onClick={[Function]}
       startButton={true}
 />,
   ],
@@ -54,11 +58,15 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div
+        "_currentElement": <styled.button
+          disabled={true}
+          onClick={[Function]}
           startButton={true}
 />,
         "_debugID": 2,
-        "_renderedOutput": <styled.div
+        "_renderedOutput": <styled.button
+          disabled={true}
+          onClick={[Function]}
           startButton={true}
 />,
       },

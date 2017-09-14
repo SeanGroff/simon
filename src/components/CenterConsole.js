@@ -95,13 +95,13 @@ export default (props: Props) =>
           <Label hasPadding>
             {'start'}
           </Label>
-          <StartStrictButton startButton />
+          <StartStrictButton startButton power={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>
             {'strict'}
           </Label>
-          <StartStrictButton startButton={false} />
+          <StartStrictButton startButton={false} power={props.power} />
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>
