@@ -8,9 +8,13 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div />,
+  "node": <styled.div
+    count={0}
+/>,
   "nodes": Array [
-    <styled.div />,
+    <styled.div
+      count={0}
+/>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -20,7 +24,6 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <Counter
         count={0}
-        on={false}
 />,
       "_debugID": 1,
       "_hostContainerInfo": null,
@@ -30,7 +33,6 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "count": 0,
-          "on": false,
         },
         "refs": Object {},
         "state": null,
@@ -52,9 +54,13 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div />,
+        "_currentElement": <styled.div
+          count={0}
+/>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div />,
+        "_renderedOutput": <styled.div
+          count={0}
+/>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,
@@ -68,7 +74,6 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <Counter
     count={0}
-    on={false}
 />,
 }
 `;

@@ -9,6 +9,7 @@ type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
   powerOnOffAction(): { type: string, payload: boolean },
+  power: boolean,
 };
 
 const Wrapper = styled.div`
@@ -88,7 +89,7 @@ export default (props: Props) =>
           <Label hasPadding>
             {'count'}
           </Label>
-          <Counter />
+          <Counter on={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>

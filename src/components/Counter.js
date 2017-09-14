@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  on: false,
-  count: 0,
+  on: boolean,
+  count: number,
 };
 
 const StyledCounter = styled.div`
@@ -20,12 +20,11 @@ const StyledCounter = styled.div`
 `;
 
 const Counter = (props: Props) =>
-  <StyledCounter>
+  <StyledCounter {...props}>
     {props.count}
   </StyledCounter>;
 
 Counter.defaultProps = {
-  on: false,
   count: 0,
 };
 
