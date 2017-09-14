@@ -1,1 +1,2 @@
-export const POWER_ON_OFF = 'POWER_ON_OFF';
+// @flow
+export const POWER_ON_OFF: string = 'POWER_ON_OFF';

@@ -15,5 +15,5 @@ const App = styled.div`
 /** */
 export default (props: {}) =>
   <App>
-    <Simon />
+    <Simon {...props} />
   </App>;

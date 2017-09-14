@@ -9,11 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <Unknown />
+    <Connect(Component) />
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <Unknown />
+      <Connect(Component) />
 </styled.div>,
   ],
   "options": Object {},
@@ -51,11 +51,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <Unknown />
+          <Connect(Component) />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <Unknown />
+          <Connect(Component) />
 </styled.div>,
       },
       "_renderedNodeType": 1,

@@ -1,11 +1,13 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import powerOnOffAction from '../actions/powerOnOffAction';
 import InnerWrapper from './InnerWrapper';
 import CenterConsole from './CenterConsole';
 
-const Simon = styled.div`
+const SimonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,11 +19,21 @@ const Simon = styled.div`
   position: relative;
 `;
 
-/**
- * @todo Connect to Redux
- */
-export default (props: {}) =>
-  <Simon>
+const mapStateToProps = state => ({
+  power: state.power,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({
+    powerOnOffAction,
+  });
+
+export const Simon = (props: {}) =>
+  <SimonContainer>
     <InnerWrapper />
-    <CenterConsole />
-  </Simon>;
+    <CenterConsole {...props} />
+  </SimonContainer>;
+
+const EnhancedSimon = connect(mapStateToProps, mapDispatchToProps)(Simon);
+
+export default EnhancedSimon;

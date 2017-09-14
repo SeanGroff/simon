@@ -8,7 +8,7 @@ import OnOffSwitch from './OnOffSwitch';
 type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
-  powerOnOff(): { type: string },
+  powerOnOff(): { type: string, payload: boolean },
 };
 
 const Wrapper = styled.div`
