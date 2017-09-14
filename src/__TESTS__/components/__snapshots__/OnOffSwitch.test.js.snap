@@ -8,16 +8,16 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <styled.div>
-    <styled.div
-        onClick={undefined}
-    />
+  "node": <styled.div
+    onClick={[Function]}
+>
+    <styled.div />
 </styled.div>,
   "nodes": Array [
-    <styled.div>
-      <styled.div
-            onClick={undefined}
-      />
+    <styled.div
+      onClick={[Function]}
+>
+      <styled.div />
 </styled.div>,
   ],
   "options": Object {},
@@ -54,16 +54,16 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <styled.div>
-          <styled.div
-                    onClick={undefined}
-          />
+        "_currentElement": <styled.div
+          onClick={[Function]}
+>
+          <styled.div />
 </styled.div>,
         "_debugID": 2,
-        "_renderedOutput": <styled.div>
-          <styled.div
-                    onClick={undefined}
-          />
+        "_renderedOutput": <styled.div
+          onClick={[Function]}
+>
+          <styled.div />
 </styled.div>,
       },
       "_renderedNodeType": 1,

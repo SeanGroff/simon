@@ -55,6 +55,7 @@ ShallowWrapper {
                 off
             </styled.label>
             <OnOffSwitch
+                power={undefined}
                 powerOnOff={undefined}
             />
             <styled.label
@@ -113,6 +114,7 @@ ShallowWrapper {
                         off
                   </styled.label>
                   <OnOffSwitch
+                        power={undefined}
                         powerOnOff={undefined}
                   />
                   <styled.label
@@ -205,6 +207,7 @@ ShallowWrapper {
                                         off
                               </styled.label>
                               <OnOffSwitch
+                                        power={undefined}
                                         powerOnOff={undefined}
                               />
                               <styled.label
@@ -263,6 +266,7 @@ ShallowWrapper {
                                         off
                               </styled.label>
                               <OnOffSwitch
+                                        power={undefined}
                                         powerOnOff={undefined}
                               />
                               <styled.label

@@ -24,9 +24,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-    powerOnOffAction,
-  });
+  bindActionCreators(
+    {
+      powerOnOffAction,
+    },
+    dispatch,
+  );
 
 export const Simon = (props: {}) =>
   <SimonContainer>
