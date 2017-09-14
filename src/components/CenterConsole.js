@@ -8,6 +8,7 @@ import OnOffSwitch from './OnOffSwitch';
 type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
+  powerOnOff(): { type: string },
 };
 
 const Wrapper = styled.div`
@@ -106,7 +107,7 @@ export default (props: Props) =>
         <Label hasMargin>
           {'off'}
         </Label>
-        <OnOffSwitch />
+        <OnOffSwitch powerOnOff={props.powerOnOff} />
         <Label hasMargin>
           {'on'}
         </Label>

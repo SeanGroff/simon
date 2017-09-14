@@ -14,8 +14,12 @@ export const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    /**
+     * @todo Write test for this reducer! Seperate them for easier tests?
+     */
     case POWER_ON_OFF:
-      if (state.powerOn) {
+      const poweredOn = !state.powerOn;
+      if (poweredOn) {
         return { ...state, powerOn: true };
       }
       return { ...state, ...initialState };

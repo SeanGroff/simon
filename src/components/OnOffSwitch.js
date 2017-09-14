@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  off: boolean,
+  powerOnOff(): { type: string },
 };
 
 const StyledSwitch = styled.div`
@@ -24,13 +24,9 @@ const Toggler = styled.div`
 const OnOffSwitch = (props: Props) => {
   return (
     <StyledSwitch>
-      <Toggler onClick={!props.off} {...props} />
+      <Toggler onClick={props.powerOnOff} {...props} />
     </StyledSwitch>
   );
-};
-
-OnOffSwitch.defaultProps = {
-  off: true,
 };
 
 export default OnOffSwitch;

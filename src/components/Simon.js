@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+// import { connect } from 'react-redux';
 import InnerWrapper from './InnerWrapper';
 import CenterConsole from './CenterConsole';
 
-const Wrapper = styled.div`
+const Simon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,8 +17,11 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+/**
+ * @todo Connect to Redux
+ */
 export default (props: {}) =>
-  <Wrapper>
+  <Simon>
     <InnerWrapper />
     <CenterConsole />
-  </Wrapper>;
+  </Simon>;

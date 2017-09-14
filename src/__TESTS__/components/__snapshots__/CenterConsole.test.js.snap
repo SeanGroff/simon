@@ -55,7 +55,7 @@ ShallowWrapper {
                 off
             </styled.label>
             <OnOffSwitch
-                off={true}
+                powerOnOff={undefined}
             />
             <styled.label
                 hasMargin={true}
@@ -113,7 +113,7 @@ ShallowWrapper {
                         off
                   </styled.label>
                   <OnOffSwitch
-                        off={true}
+                        powerOnOff={undefined}
                   />
                   <styled.label
                         hasMargin={true}
@@ -205,7 +205,7 @@ ShallowWrapper {
                                         off
                               </styled.label>
                               <OnOffSwitch
-                                        off={true}
+                                        powerOnOff={undefined}
                               />
                               <styled.label
                                         hasMargin={true}
@@ -263,7 +263,7 @@ ShallowWrapper {
                                         off
                               </styled.label>
                               <OnOffSwitch
-                                        off={true}
+                                        powerOnOff={undefined}
                               />
                               <styled.label
                                         hasMargin={true}

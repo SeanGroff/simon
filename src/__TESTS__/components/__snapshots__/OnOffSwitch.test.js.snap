@@ -10,15 +10,13 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div>
     <styled.div
-        off={true}
-        onClick={false}
+        onClick={undefined}
     />
 </styled.div>,
   "nodes": Array [
     <styled.div>
       <styled.div
-            off={true}
-            onClick={false}
+            onClick={undefined}
       />
 </styled.div>,
   ],
@@ -28,18 +26,14 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <OnOffSwitch
-        off={true}
-/>,
+      "_currentElement": <OnOffSwitch />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "off": true,
-        },
+        "props": Object {},
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -62,15 +56,13 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
           <styled.div
-                    off={true}
-                    onClick={false}
+                    onClick={undefined}
           />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
           <styled.div
-                    off={true}
-                    onClick={false}
+                    onClick={undefined}
           />
 </styled.div>,
       },
@@ -84,8 +76,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <OnOffSwitch
-    off={true}
-/>,
+  "unrendered": <OnOffSwitch />,
 }
 `;

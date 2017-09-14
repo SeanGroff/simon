@@ -12,6 +12,7 @@ const App = styled.div`
   background: DodgerBlue;
 `;
 
+/** */
 export default (props: {}) =>
   <App>
     <Simon />
