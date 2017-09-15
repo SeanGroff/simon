@@ -6,13 +6,16 @@ import appReducer from './reducers/appReducer';
  * State structure
  */
 export const initialState = {
+  /**
+   * @todo Implement commented out state properties
+   */
   power: false,
-  strictMode: false,
-  gameOver: false,
-  playerWrongButtonPress: false,
+  // strictMode: false,
+  // gameOver: false,
+  // playerWrongButtonPress: false,
   counter: 0,
-  aiColorSequence: undefined, // [{ buttonPressNum: 0, color: BLUE }, ...]
-  playerTurn: false,
+  lightSequence: [], // [0, 1, 2, 3]
+  // playerTurn: false,
 };
 
 /* eslint-disable no-underscore-dangle */

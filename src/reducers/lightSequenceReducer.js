@@ -6,12 +6,12 @@ type Action = {
   payload?: any,
 };
 
-export default function(state: number = 0, action: Action) {
+export default function(state: [] = [], action: Action) {
   switch (action.type) {
     case START_GAME:
-      return 1;
+      return [action.payload];
     case POWER_ON_OFF:
-      return 0;
+      return [];
     default:
       return state;
   }

@@ -1,11 +1,12 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { getRandomNumber } from '../utils/logic';
 
 type Props = {
   startButton: boolean,
   power: boolean,
-  startGame(): { type: string },
+  startGame(randomNumber: number): { type: string, payload: number },
 };
 
 const StyledButton = styled.button`
@@ -33,16 +34,14 @@ const StyledButton = styled.button`
 const StartStrictButton = (props: Props) => {
   const clickHandler = () => {
     if (props.startButton) {
-      props.startGame();
+      props.startGame(getRandomNumber());
     } else {
       /**
        * @todo strictGame()
        */
     }
   };
-  return (
-    <StyledButton disabled={!props.power} onClick={clickHandler} {...props} />
-  );
+  return <StyledButton onClick={clickHandler} {...props} />;
 };
 
 StartStrictButton.defaultProps = {

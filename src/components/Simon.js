@@ -8,6 +8,13 @@ import startGameAction from '../actions/startGameAction';
 import InnerWrapper from './InnerWrapper';
 import CenterConsole from './CenterConsole';
 
+type Props = {
+  powerOnOffAction(): { type: string, payload: boolean },
+  startGameAction(randomNumber: number): { type: string, payload: number },
+  power: boolean,
+  counter: number,
+};
+
 const SimonContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -34,7 +41,7 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export const Simon = (props: {}) =>
+export const Simon = (props: Props) =>
   <SimonContainer>
     <InnerWrapper />
     <CenterConsole {...props} />

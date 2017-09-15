@@ -9,7 +9,7 @@ type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
   powerOnOffAction(): { type: string, payload: boolean },
-  startGameAction(): { type: string },
+  startGameAction(randomNumber: number): { type: string, payload: number },
   power: boolean,
   counter: number,
 };
@@ -99,7 +99,7 @@ export default (props: Props) =>
           </Label>
           <StartStrictButton
             startButton
-            disabled={props.counter}
+            disabled={!props.power || props.counter}
             power={props.power}
             startGame={props.startGameAction}
           />
@@ -108,7 +108,11 @@ export default (props: Props) =>
           <Label hasPadding>
             {'strict'}
           </Label>
-          <StartStrictButton startButton={false} power={props.power} />
+          <StartStrictButton
+            startButton={false}
+            disabled={!props.power}
+            power={props.power}
+          />
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>

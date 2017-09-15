@@ -1,3 +1,12 @@
+// @flow
 import { START_GAME } from './constants';
 
-export default () => ({ type: START_GAME });
+type Action = {
+  type: string,
+  payload: number,
+};
+
+export default (randomNumber: number): Action => ({
+  type: START_GAME,
+  payload: randomNumber,
+});

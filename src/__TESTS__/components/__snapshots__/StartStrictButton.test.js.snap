@@ -9,13 +9,11 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.button
-    disabled={true}
     onClick={[Function]}
     startButton={true}
 />,
   "nodes": Array [
     <styled.button
-      disabled={true}
       onClick={[Function]}
       startButton={true}
 />,
@@ -59,13 +57,11 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.button
-          disabled={true}
           onClick={[Function]}
           startButton={true}
 />,
         "_debugID": 2,
         "_renderedOutput": <styled.button
-          disabled={true}
           onClick={[Function]}
           startButton={true}
 />,

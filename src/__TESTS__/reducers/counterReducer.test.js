@@ -12,6 +12,6 @@ describe('Counter reducer', () => {
   });
 
   it('should handle POWER_ON_OFF action', () => {
-    expect(reducer({}, { type: POWER_ON_OFF })).toEqual(0);
+    expect(reducer({}, { type: POWER_ON_OFF, payload: false })).toEqual(0);
   });
 });
