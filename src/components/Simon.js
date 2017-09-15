@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import powerOnOffAction from '../actions/powerOnOffAction';
+import startGameAction from '../actions/startGameAction';
 import InnerWrapper from './InnerWrapper';
 import CenterConsole from './CenterConsole';
 
@@ -21,12 +22,14 @@ const SimonContainer = styled.div`
 
 const mapStateToProps = state => ({
   power: state.power,
+  counter: state.counter,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       powerOnOffAction,
+      startGameAction,
     },
     dispatch,
   );

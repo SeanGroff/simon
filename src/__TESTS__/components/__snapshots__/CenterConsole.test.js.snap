@@ -34,8 +34,10 @@ ShallowWrapper {
                     start
                 </styled.label>
                 <StartStrictButton
+                    disabled={undefined}
                     power={undefined}
                     startButton={true}
+                    startGame={undefined}
                 />
             </styled.span>
             <styled.span>
@@ -95,8 +97,10 @@ ShallowWrapper {
                               start
                         </styled.label>
                         <StartStrictButton
+                              disabled={undefined}
                               power={undefined}
                               startButton={true}
+                              startGame={undefined}
                         />
                   </styled.span>
                   <styled.span>
@@ -190,8 +194,10 @@ ShallowWrapper {
                                                   start
                                         </styled.label>
                                         <StartStrictButton
+                                                  disabled={undefined}
                                                   power={undefined}
                                                   startButton={true}
+                                                  startGame={undefined}
                                         />
                               </styled.span>
                               <styled.span>
@@ -251,8 +257,10 @@ ShallowWrapper {
                                                   start
                                         </styled.label>
                                         <StartStrictButton
+                                                  disabled={undefined}
                                                   power={undefined}
                                                   startButton={true}
+                                                  startGame={undefined}
                                         />
                               </styled.span>
                               <styled.span>

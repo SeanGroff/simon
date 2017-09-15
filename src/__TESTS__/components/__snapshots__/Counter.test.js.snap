@@ -10,11 +10,15 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.div
     count={0}
-/>,
+>
+    --
+</styled.div>,
   "nodes": Array [
     <styled.div
       count={0}
-/>,
+>
+      --
+</styled.div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -56,11 +60,15 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div
           count={0}
-/>,
+>
+          --
+</styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div
           count={0}
-/>,
+>
+          --
+</styled.div>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,

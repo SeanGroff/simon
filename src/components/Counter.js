@@ -21,7 +21,7 @@ const StyledCounter = styled.div`
 
 const Counter = (props: Props) =>
   <StyledCounter {...props}>
-    {props.count}
+    {props.count || '--'}
   </StyledCounter>;
 
 Counter.defaultProps = {

@@ -9,7 +9,9 @@ type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
   powerOnOffAction(): { type: string, payload: boolean },
+  startGameAction(): { type: string },
   power: boolean,
+  counter: number,
 };
 
 const Wrapper = styled.div`
@@ -89,13 +91,18 @@ export default (props: Props) =>
           <Label hasPadding>
             {'count'}
           </Label>
-          <Counter on={props.power} />
+          <Counter count={props.counter} on={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>
             {'start'}
           </Label>
-          <StartStrictButton startButton power={props.power} />
+          <StartStrictButton
+            startButton
+            disabled={props.counter}
+            power={props.power}
+            startGame={props.startGameAction}
+          />
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 type Props = {
   startButton: boolean,
   power: boolean,
+  startGame(): { type: string },
 };
 
 const StyledButton = styled.button`
@@ -30,7 +31,15 @@ const StyledButton = styled.button`
 `;
 
 const StartStrictButton = (props: Props) => {
-  const clickHandler = () => console.log('click!');
+  const clickHandler = () => {
+    if (props.startButton) {
+      props.startGame();
+    } else {
+      /**
+       * @todo strictGame()
+       */
+    }
+  };
   return (
     <StyledButton disabled={!props.power} onClick={clickHandler} {...props} />
   );
