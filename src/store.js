@@ -15,7 +15,7 @@ export const initialState = {
   // playerWrongButtonPress: false,
   counter: 0,
   lightSequence: [], // [0, 1, 2, 3]
-  // playerTurn: false,
+  playerTurn: false,
 };
 
 /* eslint-disable no-underscore-dangle */
