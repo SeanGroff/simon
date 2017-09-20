@@ -9,12 +9,12 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <styled.div>
-    <Unknown />
+    <Lights />
     <Unknown />
 </styled.div>,
   "nodes": Array [
     <styled.div>
-      <Unknown />
+      <Lights />
       <Unknown />
 </styled.div>,
   ],
@@ -53,12 +53,12 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.div>
-          <Unknown />
+          <Lights />
           <Unknown />
 </styled.div>,
         "_debugID": 2,
         "_renderedOutput": <styled.div>
-          <Unknown />
+          <Lights />
           <Unknown />
 </styled.div>,
       },

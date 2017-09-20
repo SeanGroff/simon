@@ -1,15 +1,29 @@
 // @flow
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 type Props = {
+  animate: boolean,
   color: string,
+  lightUpColor: string,
   clickable: boolean,
   topLeft?: boolean,
   topRight?: boolean,
   bottomLeft?: boolean,
   bottomRight?: boolean,
 };
+
+const LightUp = (props: Props) => keyframes`
+  0% {
+    background-color: ${props.color};;
+  }
+  30%, 60% {
+    background-color: ${props.lightUpColor};
+  }
+  100% {
+    background-color: ${props.color};
+  }
+`;
 
 const StyledLight = styled.div`
   display: inline-block;
@@ -24,11 +38,14 @@ const StyledLight = styled.div`
   border-bottom-right-radius: ${(props: Props) =>
     props.bottomRight ? '100%' : '0'};
   pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
+  animation: ${(props: Props) =>
+    props.animate ? `${LightUp(props)} 1500ms linear` : 'none'};
 `;
 
 const Light = (props: Props) => <StyledLight {...props} />;
 
 Light.defaultProps = {
+  animate: false,
   clickable: false,
 };
 

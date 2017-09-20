@@ -13,6 +13,7 @@ type Props = {
   startGameAction(randomNumber: number): { type: string, payload: number },
   power: boolean,
   counter: number,
+  lightSequence: ?(Number[]),
 };
 
 const SimonContainer = styled.div`
@@ -30,6 +31,7 @@ const SimonContainer = styled.div`
 const mapStateToProps = state => ({
   power: state.power,
   counter: state.counter,
+  lightSequence: state.lightSequence,
 });
 
 const mapDispatchToProps = dispatch =>
@@ -43,7 +45,7 @@ const mapDispatchToProps = dispatch =>
 
 export const Simon = (props: Props) =>
   <SimonContainer>
-    <LightsWrapper />
+    <LightsWrapper {...props} />
     <CenterConsole {...props} />
   </SimonContainer>;
 
