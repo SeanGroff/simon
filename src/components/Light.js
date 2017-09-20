@@ -11,7 +11,7 @@ type Props = {
   bottomRight?: boolean,
 };
 
-const StyledButton = styled.div`
+const StyledLight = styled.div`
   display: inline-block;
   width: 200px;
   height: 200px;
@@ -26,10 +26,10 @@ const StyledButton = styled.div`
   pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
 `;
 
-const Button = (props: Props) => <StyledButton {...props} />;
+const Light = (props: Props) => <StyledLight {...props} />;
 
-Button.defaultProps = {
+Light.defaultProps = {
   clickable: false,
 };
 
-export default Button;
+export default Light;

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import powerOnOffAction from '../actions/powerOnOffAction';
 import startGameAction from '../actions/startGameAction';
-import InnerWrapper from './InnerWrapper';
+import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
 
 type Props = {
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch =>
 
 export const Simon = (props: Props) =>
   <SimonContainer>
-    <InnerWrapper />
+    <LightsWrapper />
     <CenterConsole {...props} />
   </SimonContainer>;
 

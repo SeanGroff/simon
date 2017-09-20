@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import InnerWrapper from '../../components/InnerWrapper';
+import LightsWrapper from '../../components/LightsWrapper';
 
 it('renders correctly', () => {
-  const component = shallow(<InnerWrapper />);
+  const component = shallow(<LightsWrapper />);
   expect(component).toMatchSnapshot();
 });

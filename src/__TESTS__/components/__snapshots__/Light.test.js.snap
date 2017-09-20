@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render a button with a green background 1`] = `
+exports[`should render a Light with a green background 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -24,7 +24,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <Button
+      "_currentElement": <Light
         clickable={false}
         color="green"
 />,
@@ -78,7 +78,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Button
+  "unrendered": <Light
     clickable={false}
     color="green"
 />,
