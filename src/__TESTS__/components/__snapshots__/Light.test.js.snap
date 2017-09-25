@@ -12,12 +12,14 @@ ShallowWrapper {
     animate={false}
     clickable={false}
     color="green"
+    onClick={[Function]}
 />,
   "nodes": Array [
     <styled.div
       animate={false}
       clickable={false}
       color="green"
+      onClick={[Function]}
 />,
   ],
   "options": Object {},
@@ -66,12 +68,14 @@ ShallowWrapper {
           animate={false}
           clickable={false}
           color="green"
+          onClick={[Function]}
 />,
         "_debugID": 2,
         "_renderedOutput": <styled.div
           animate={false}
           clickable={false}
           color="green"
+          onClick={[Function]}
 />,
       },
       "_renderedNodeType": 1,
