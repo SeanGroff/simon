@@ -10,12 +10,12 @@ import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
 
 type Props = {
-  powerOnOffAction(): { type: string, payload: boolean },
+  powerOnOffAction(payload: boolean): { type: string, payload: boolean },
   startGameAction(randomNumber: number): { type: string, payload: number },
   nextTurnThunk(): any,
   power: boolean,
   counter: number,
-  lightSequence: ?(Number[]),
+  lightSequence: ?(number[]),
   playerTurn: boolean,
 };
 
@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
   playerTurn: state.playerTurn,
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
       powerOnOffAction,

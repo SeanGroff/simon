@@ -4,10 +4,17 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import appReducer from './reducers/appReducer';
 
+type State = {
+  +power: boolean,
+  +counter: number,
+  +lightSequence: ?(number[]),
+  +playerTurn: boolean,
+};
+
 /**
  * State structure
  */
-export const initialState = {
+export const initialState: State = {
   /**
    * @todo Implement commented out state properties
    */

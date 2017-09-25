@@ -1,10 +1,8 @@
 // @flow
+import type { NextTurnAction } from './actionTypes';
 import { NEXT_TURN } from './constants';
 
-type Action = {
-  type: string,
-  payload: boolean,
-};
+type Action = NextTurnAction;
 
 export const nextTurnAction = (payload: boolean): Action => ({
   type: NEXT_TURN,
@@ -12,7 +10,7 @@ export const nextTurnAction = (payload: boolean): Action => ({
 });
 
 export function nextTurnThunk() {
-  return (dispatch, getState) => {
+  return (dispatch: *, getState: *) => {
     const { turn, counter } = getState();
     setTimeout(() => {
       dispatch(nextTurnAction(!turn));

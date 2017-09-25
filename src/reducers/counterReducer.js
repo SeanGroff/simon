@@ -1,12 +1,12 @@
 // @flow
+import type { StartGameAction, PowerOnOffAction } from '../actions/actionTypes';
 import { START_GAME, POWER_ON_OFF } from '../actions/constants';
 
-type Action = {
-  type: string,
-  payload?: any,
-};
+type State = number;
 
-export default function(state: number = 0, action: Action) {
+type Action = StartGameAction | PowerOnOffAction;
+
+export default function(state: State = 0, action: Action) {
   switch (action.type) {
     case START_GAME:
       return 1;

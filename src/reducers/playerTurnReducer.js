@@ -1,12 +1,12 @@
 // @flow
+import type { StartGameAction, NextTurnAction } from '../actions/actionTypes';
 import { NEXT_TURN, POWER_ON_OFF } from '../actions/constants';
 
-type Action = {
-  type: string,
-  payload?: boolean,
-};
+type State = boolean;
 
-export default function(state: boolean = false, action: Action) {
+type Action = StartGameAction | NextTurnAction;
+
+export default function(state: State = false, action: Action) {
   switch (action.type) {
     case NEXT_TURN:
       return action.payload;
