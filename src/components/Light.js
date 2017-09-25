@@ -3,6 +3,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type Props = {
+  id: number,
   animate: boolean,
   color: string,
   lightUpColor: string,
@@ -45,7 +46,8 @@ const StyledLight = styled.div`
   }
 `;
 
-const Light = (props: Props) => <StyledLight {...props} />;
+const Light = (props: Props) =>
+  <StyledLight onClick={() => console.log('click ', props.id)} {...props} />;
 
 Light.defaultProps = {
   animate: false,

@@ -26,6 +26,7 @@ export default class Lights extends Component {
       <LightsWrapper>
         <LightsRow>
           <Light
+            id={0}
             animate={this.state.lightOn === 0}
             topLeft
             clickable={this.props.playerTurn}
@@ -33,6 +34,7 @@ export default class Lights extends Component {
             lightUpColor="#13ff7c"
           />
           <Light
+            id={1}
             animate={this.state.lightOn === 1}
             topRight
             clickable={this.props.playerTurn}
@@ -42,6 +44,7 @@ export default class Lights extends Component {
         </LightsRow>
         <LightsRow>
           <Light
+            id={2}
             animate={this.state.lightOn === 2}
             bottomLeft
             clickable={this.props.playerTurn}
@@ -49,6 +52,7 @@ export default class Lights extends Component {
             lightUpColor="#fed93f"
           />
           <Light
+            id={3}
             animate={this.state.lightOn === 3}
             bottomRight
             clickable={this.props.playerTurn}
