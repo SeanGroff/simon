@@ -1,5 +1,5 @@
 import reducer from '../../reducers/playerTurnReducer';
-import { START_GAME, POWER_ON_OFF } from '../../actions/constants';
+import { NEXT_TURN, POWER_ON_OFF } from '../../actions/constants';
 
 describe('player turn reducer', () => {
   it('should return the initial state', () => {
@@ -7,11 +7,8 @@ describe('player turn reducer', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it('should handle START_GAME action', () => {
-    const randomNumber = 3;
-    expect(reducer({}, { type: START_GAME, payload: randomNumber })).toEqual(
-      true,
-    );
+  it('should handle NEXT_TURN action', () => {
+    expect(reducer({}, { type: NEXT_TURN, payload: false })).toEqual(false);
   });
 
   it('should handle POWER_ON_OFF action', () => {

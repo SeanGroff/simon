@@ -40,6 +40,9 @@ const StyledLight = styled.div`
   pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
   animation: ${(props: Props) =>
     props.animate ? `${LightUp(props)} 1500ms linear` : 'none'};
+  :hover {
+    cursor: ${(props: Props) => (props.clickable ? 'pointer' : 'initial')};
+  }
 `;
 
 const Light = (props: Props) => <StyledLight {...props} />;
