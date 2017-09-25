@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><link rel="stylesheet" href="../../../assets/semantic.min.css"/><link rel="stylesheet" href="../../../assets/codemirror.css"/><link rel="stylesheet" href="../../../assets/flow-highlight-source.css"/><link rel="stylesheet" href="../../../assets/flow-coverage-report.css"/><link rel="stylesheet" href="../../../assets/codemirror-simplescrollbars-addon.css"/><script src="../../../assets/jquery-3.1.0.min.js"></script><script src="../../../assets/semantic.min.js"></script><script src="../../../assets/semantic-tablesort.js"></script><script src="../../../assets/codemirror.js"></script><script src="../../../assets/codemirror-javascript-mode.js"></script><script src="../../../assets/codemirror-annotatescrollbar-addon.js"></script><script src="../../../assets/codemirror-simplescrollbars-addon.js"></script><script src="../../../assets/flow-highlight-source.js"></script><script src="../../../assets/index.js"></script><style>
+.ui .CodeMirror {
+  border: 1px solid rgba(34,36,38,.15);
+  height: auto;
+}
+</style></head><body><div class="ui grid container"><div class="row"><div class="twelve wide column"><h2 class="ui header"><a href="../../../index.html" id="link-to-summary">Flow Coverage Report</a></h2></div></div><div class="row"><table class="ui small celled unstackable table"><thead><tr><th class="sorted ascending">Filename</th><th>Percent</th><th>Total</th><th>Covered</th><th>Uncovered</th></tr></thead><tbody><tr class="positive"><td class="">src/components/Simon.js</td><td><span>81 %</span></td><td> 54 </td><td> 44 </td><td> 10 </td></tr></tbody></table></div><div class="row ui one column centered grid"><div class="column" style="text-align:left;"><div class="row"><div class="ui form"><div class="fields"><div class="sixteen wide inline field"><select class="ui search dropdown uncovered-locations"><option value="">Uncovered Locations</option><option value="38">Start: 38,25 - End: 38,29</option><option value="39">Start: 39,10 - End: 39,14</option><option value="39">Start: 39,10 - End: 39,20</option><option value="40">Start: 40,12 - End: 40,16</option><option value="40">Start: 40,12 - End: 40,24</option><option value="41">Start: 41,18 - End: 41,22</option><option value="41">Start: 41,18 - End: 41,36</option><option value="42">Start: 42,15 - End: 42,19</option><option value="42">Start: 42,15 - End: 42,30</option><option value="64">Start: 64,7 - End: 64,31</option></select></div><div class="four wide inline field"><select class="ui search dropdown syntax-highlighting"><option value="es">ES6/ES7</option><option value="js">JavaScript</option><option value="no">None</option></select></div></div></div></div><textarea id="file-content" readonly="">// @flow
+import React, { Component } from &#x27;react&#x27;;
+import styled from &#x27;styled-components&#x27;;
+import { connect } from &#x27;react-redux&#x27;;
+import { bindActionCreators } from &#x27;redux&#x27;;
+import powerOnOffAction from &#x27;../actions/powerOnOffAction&#x27;;
+import startGameAction from &#x27;../actions/startGameAction&#x27;;
+import { nextTurnThunk } from &#x27;../actions/nextTurnAction&#x27;;
+import LightsWrapper from &#x27;./LightsWrapper&#x27;;
+import CenterConsole from &#x27;./CenterConsole&#x27;;
+
+type Props = {
+  powerOnOffAction(payload: boolean): { type: string, payload: boolean },
+  startGameAction(randomNumber: number): { type: string, payload: number },
+  nextTurnThunk(): any,
+  power: boolean,
+  counter: number,
+  lightSequence: ?(number[]),
+  playerTurn: boolean,
+};
+
+type State = {
+  playerTurn: boolean,
+};
+
+const SimonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  border-radius: 100%;
+  box-shadow: 0 0 12px #222222;
+  width: 472px;
+  height: 472px;
+  position: relative;
+`;
+
+const mapStateToProps = state =&gt; ({
+  power: state.power,
+  counter: state.counter,
+  lightSequence: state.lightSequence,
+  playerTurn: state.playerTurn,
+});
+
+const mapDispatchToProps = (dispatch: *) =&gt;
+  bindActionCreators(
+    {
+      powerOnOffAction,
+      startGameAction,
+      nextTurnThunk,
+    },
+    dispatch,
+  );
+
+export class Simon extends Component&lt;Props, State&gt; {
+  state: State = { playerTurn: false };
+
+  componentWillUpdate(nextProps: Props) {
+    if (
+      nextProps.lightSequence !== this.props.lightSequence &amp;&amp;
+      nextProps.lightSequence &amp;&amp;
+      nextProps.lightSequence.length
+    ) {
+      nextProps.nextTurnThunk();
+    }
+  }
+
+  render() {
+    return (
+      &lt;SimonContainer&gt;
+        &lt;LightsWrapper {...this.props} /&gt;
+        &lt;CenterConsole {...this.props} /&gt;
+      &lt;/SimonContainer&gt;
+    );
+  }
+}
+
+const EnhancedSimon = connect(mapStateToProps, mapDispatchToProps)(Simon);
+
+export default EnhancedSimon;
+</textarea></div></div><div class="row centered"><footer>Flow Coverage Report generated by<a href="https://flowtype.org"> flow </a>and<a href="https://github.com/rpl/flow-coverage-report"> flow-coverage-report </a>at Mon Sep 25 2017 12:28:36 GMT-0500 (CDT)</footer></div></div><pre id="file-coverage-data" style="display:none;">{&quot;expressions&quot;:{&quot;covered_count&quot;:44,&quot;uncovered_count&quot;:10,&quot;uncovered_locs&quot;:[{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:38,&quot;column&quot;:25,&quot;offset&quot;:1036},&quot;end&quot;:{&quot;line&quot;:38,&quot;column&quot;:29,&quot;offset&quot;:1041}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:39,&quot;column&quot;:10,&quot;offset&quot;:1057},&quot;end&quot;:{&quot;line&quot;:39,&quot;column&quot;:14,&quot;offset&quot;:1062}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:39,&quot;column&quot;:10,&quot;offset&quot;:1057},&quot;end&quot;:{&quot;line&quot;:39,&quot;column&quot;:20,&quot;offset&quot;:1068}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:40,&quot;column&quot;:12,&quot;offset&quot;:1081},&quot;end&quot;:{&quot;line&quot;:40,&quot;column&quot;:16,&quot;offset&quot;:1086}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:40,&quot;column&quot;:12,&quot;offset&quot;:1081},&quot;end&quot;:{&quot;line&quot;:40,&quot;column&quot;:24,&quot;offset&quot;:1094}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:41,&quot;column&quot;:18,&quot;offset&quot;:1113},&quot;end&quot;:{&quot;line&quot;:41,&quot;column&quot;:22,&quot;offset&quot;:1118}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:41,&quot;column&quot;:18,&quot;offset&quot;:1113},&quot;end&quot;:{&quot;line&quot;:41,&quot;column&quot;:36,&quot;offset&quot;:1132}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:42,&quot;column&quot;:15,&quot;offset&quot;:1148},&quot;end&quot;:{&quot;line&quot;:42,&quot;column&quot;:19,&quot;offset&quot;:1153}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:42,&quot;column&quot;:15,&quot;offset&quot;:1148},&quot;end&quot;:{&quot;line&quot;:42,&quot;column&quot;:30,&quot;offset&quot;:1164}},{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/Simon.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:64,&quot;column&quot;:7,&quot;offset&quot;:1629},&quot;end&quot;:{&quot;line&quot;:64,&quot;column&quot;:31,&quot;offset&quot;:1654}}]},&quot;filename&quot;:&quot;src/components/Simon.js&quot;,&quot;percent&quot;:81}</pre></body></html>

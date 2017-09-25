@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><link rel="stylesheet" href="../../../assets/semantic.min.css"/><link rel="stylesheet" href="../../../assets/codemirror.css"/><link rel="stylesheet" href="../../../assets/flow-highlight-source.css"/><link rel="stylesheet" href="../../../assets/flow-coverage-report.css"/><link rel="stylesheet" href="../../../assets/codemirror-simplescrollbars-addon.css"/><script src="../../../assets/jquery-3.1.0.min.js"></script><script src="../../../assets/semantic.min.js"></script><script src="../../../assets/semantic-tablesort.js"></script><script src="../../../assets/codemirror.js"></script><script src="../../../assets/codemirror-javascript-mode.js"></script><script src="../../../assets/codemirror-annotatescrollbar-addon.js"></script><script src="../../../assets/codemirror-simplescrollbars-addon.js"></script><script src="../../../assets/flow-highlight-source.js"></script><script src="../../../assets/index.js"></script><style>
+.ui .CodeMirror {
+  border: 1px solid rgba(34,36,38,.15);
+  height: auto;
+}
+</style></head><body><div class="ui grid container"><div class="row"><div class="twelve wide column"><h2 class="ui header"><a href="../../../index.html" id="link-to-summary">Flow Coverage Report</a></h2></div></div><div class="row"><table class="ui small celled unstackable table"><thead><tr><th class="sorted ascending">Filename</th><th>Percent</th><th>Total</th><th>Covered</th><th>Uncovered</th></tr></thead><tbody><tr class="positive"><td class="">src/components/LightsWrapper.js</td><td><span>99 %</span></td><td> 117 </td><td> 116 </td><td> 1 </td></tr></tbody></table></div><div class="row ui one column centered grid"><div class="column" style="text-align:left;"><div class="row"><div class="ui form"><div class="fields"><div class="sixteen wide inline field"><select class="ui search dropdown uncovered-locations"><option value="">Uncovered Locations</option><option value="25">Start: 25,6 - End: 25,14</option></select></div><div class="four wide inline field"><select class="ui search dropdown syntax-highlighting"><option value="es">ES6/ES7</option><option value="js">JavaScript</option><option value="no">None</option></select></div></div></div></div><textarea id="file-content" readonly="">// @flow
+import React, { Component } from &#x27;react&#x27;;
+import styled from &#x27;styled-components&#x27;;
+import Light from &#x27;./Light&#x27;;
+
+type Props = {
+  powerOnOffAction(payload: boolean): { type: string, payload: boolean },
+  startGameAction(randomNumber: number): { type: string, payload: number },
+  nextTurnThunk(): any,
+  power: boolean,
+  counter: number,
+  lightSequence: ?(number[]),
+  playerTurn: boolean,
+};
+
+type State = { lightOn: number };
+
+const LightsWrapper = styled.div`position: relative;`;
+
+const LightsRow = styled.div`margin-bottom: -4px;`;
+
+export default class Lights extends Component&lt;Props, State&gt; {
+  constructor(props: Props) {
+    super(props);
+    (this: any).clickHandler = this.clickHandler.bind(this);
+  }
+
+  state = { lightOn: 100 };
+
+  componentWillReceiveProps({ playerTurn, lightSequence }: Props) {
+    if (lightSequence &amp;&amp; lightSequence.length) {
+      lightSequence.forEach((light: number): void =&gt; {
+        console.log(light);
+        this.setState((prevState, props) =&gt; ({
+          lightOn: light,
+        }));
+      });
+    }
+
+    if (playerTurn &amp;&amp; lightSequence &amp;&amp; lightSequence.length) {
+      lightSequence.forEach((light: number): void =&gt; {
+        this.setState((prevState, props) =&gt; ({
+          lightOn: 100,
+        }));
+      });
+    }
+  }
+
+  clickHandler(id: number) {
+    this.setState((prevState, props) =&gt; ({
+      lightOn: id,
+    }));
+  }
+
+  render() {
+    return (
+      &lt;LightsWrapper&gt;
+        &lt;LightsRow&gt;
+          &lt;Light
+            id={0}
+            animate={this.state.lightOn === 0}
+            topLeft
+            clickable={this.props.playerTurn}
+            color=&quot;#00A74A&quot;
+            lightUpColor=&quot;#13ff7c&quot;
+            onClick={() =&gt; this.clickHandler(0)}
+          /&gt;
+          &lt;Light
+            id={1}
+            animate={this.state.lightOn === 1}
+            topRight
+            clickable={this.props.playerTurn}
+            color=&quot;#9F0F17&quot;
+            lightUpColor=&quot;#ff4c4c&quot;
+            onClick={() =&gt; this.clickHandler(1)}
+          /&gt;
+        &lt;/LightsRow&gt;
+        &lt;LightsRow&gt;
+          &lt;Light
+            id={2}
+            animate={this.state.lightOn === 2}
+            bottomLeft
+            clickable={this.props.playerTurn}
+            color=&quot;#CCA707&quot;
+            lightUpColor=&quot;#fed93f&quot;
+            onClick={() =&gt; this.clickHandler(2)}
+          /&gt;
+          &lt;Light
+            id={3}
+            animate={this.state.lightOn === 3}
+            bottomRight
+            clickable={this.props.playerTurn}
+            color=&quot;#094A8F&quot;
+            lightUpColor=&quot;#1c8cff&quot;
+            onClick={() =&gt; this.clickHandler(3)}
+          /&gt;
+        &lt;/LightsRow&gt;
+      &lt;/LightsWrapper&gt;
+    );
+  }
+}
+</textarea></div></div><div class="row centered"><footer>Flow Coverage Report generated by<a href="https://flowtype.org"> flow </a>and<a href="https://github.com/rpl/flow-coverage-report"> flow-coverage-report </a>at Mon Sep 25 2017 12:28:36 GMT-0500 (CDT)</footer></div></div><pre id="file-coverage-data" style="display:none;">{&quot;expressions&quot;:{&quot;covered_count&quot;:116,&quot;uncovered_count&quot;:1,&quot;uncovered_locs&quot;:[{&quot;source&quot;:&quot;/Users/seangoff/Sites/simon/src/components/LightsWrapper.js&quot;,&quot;type&quot;:&quot;SourceFile&quot;,&quot;start&quot;:{&quot;line&quot;:25,&quot;column&quot;:6,&quot;offset&quot;:663},&quot;end&quot;:{&quot;line&quot;:25,&quot;column&quot;:14,&quot;offset&quot;:672}}]},&quot;filename&quot;:&quot;src/components/LightsWrapper.js&quot;,&quot;percent&quot;:99}</pre></body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><link rel="stylesheet" href="../../../assets/semantic.min.css"/><link rel="stylesheet" href="../../../assets/codemirror.css"/><link rel="stylesheet" href="../../../assets/flow-highlight-source.css"/><link rel="stylesheet" href="../../../assets/flow-coverage-report.css"/><link rel="stylesheet" href="../../../assets/codemirror-simplescrollbars-addon.css"/><script src="../../../assets/jquery-3.1.0.min.js"></script><script src="../../../assets/semantic.min.js"></script><script src="../../../assets/semantic-tablesort.js"></script><script src="../../../assets/codemirror.js"></script><script src="../../../assets/codemirror-javascript-mode.js"></script><script src="../../../assets/codemirror-annotatescrollbar-addon.js"></script><script src="../../../assets/codemirror-simplescrollbars-addon.js"></script><script src="../../../assets/flow-highlight-source.js"></script><script src="../../../assets/index.js"></script><style>
+.ui .CodeMirror {
+  border: 1px solid rgba(34,36,38,.15);
+  height: auto;
+}
+</style></head><body><div class="ui grid container"><div class="row"><div class="twelve wide column"><h2 class="ui header"><a href="../../../index.html" id="link-to-summary">Flow Coverage Report</a></h2></div></div><div class="row"><table class="ui small celled unstackable table"><thead><tr><th class="sorted ascending">Filename</th><th>Percent</th><th>Total</th><th>Covered</th><th>Uncovered</th></tr></thead><tbody><tr class="positive"><td class="">src/components/CenterConsole.js</td><td><span>100 %</span></td><td> 72 </td><td> 72 </td><td> 0 </td></tr></tbody></table></div><div class="row ui one column centered grid"><div class="column" style="text-align:left;"><div class="row"><div class="ui form"><div class="fields"><div class="sixteen wide inline field"><select class="ui search dropdown uncovered-locations"><option value="">Uncovered Locations</option></select></div><div class="four wide inline field"><select class="ui search dropdown syntax-highlighting"><option value="es">ES6/ES7</option><option value="js">JavaScript</option><option value="no">None</option></select></div></div></div></div><textarea id="file-content" readonly="">// @flow
+import React from &#x27;react&#x27;;
+import styled from &#x27;styled-components&#x27;;
+import Counter from &#x27;./Counter&#x27;;
+import StartStrictButton from &#x27;./StartStrictButton&#x27;;
+import OnOffSwitch from &#x27;./OnOffSwitch&#x27;;
+
+type Props = {
+  hasMargin?: boolean,
+  hasPadding?: boolean,
+  powerOnOffAction(): { type: string, payload: boolean },
+  startGameAction(randomNumber: number): { type: string, payload: number },
+  power: boolean,
+  counter: number,
+};
+
+const Wrapper = styled.div`
+  position: absolute;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  background-color: #ece7ee;
+  border: 12px solid #333333;
+  width: 220px;
+  height: 220px;
+  margin: -120px 0 0 -120px;
+`;
+
+const TopHalf = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  width: 220px;
+  height: 110px;
+  border-top-left-radius: 220px;
+  border-top-right-radius: 220px;
+  margin-top: -13px;
+`;
+
+const BottomHalf = TopHalf.extend`
+  flex-direction: column;
+  background-color: #ece7ee;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 220px;
+  border-bottom-right-radius: 220px;
+  margin-top: 0;
+`;
+
+const Header = styled.span`
+  color: #ece7ee;
+  font-family: &#x27;Anton&#x27;, sans-serif;
+  font-size: 52px;
+  letter-spacing: 2px;
+  margin-top: 35px;
+  text-transform: capitalize;
+`;
+
+const ButtonsRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+const ButtonWrapper = styled.span`
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+`;
+
+const Label = styled.label`
+  font-size: 14px;
+  color: #222222;
+  margin: ${(props: Props) =&gt; (props.hasMargin ? &#x27;auto 5px 0 5px&#x27; : &#x27;0&#x27;)};
+  padding: ${(props: Props) =&gt; (props.hasPadding ? &#x27;0 0 5px 0&#x27; : &#x27;0&#x27;)};
+  text-transform: capitalize;
+  text-align: center;
+`;
+
+export default (props: Props) =&gt;
+  &lt;Wrapper&gt;
+    &lt;TopHalf&gt;
+      &lt;Header&gt;
+        {&#x27;simon&#x27;}
+      &lt;/Header&gt;
+    &lt;/TopHalf&gt;
+    &lt;BottomHalf&gt;
+      &lt;ButtonsRow&gt;
+        &lt;ButtonWrapper&gt;
+          &lt;Label hasPadding&gt;
+            {&#x27;count&#x27;}
+          &lt;/Label&gt;
+          &lt;Counter count={props.counter} on={props.power} /&gt;
+        &lt;/ButtonWrapper&gt;
+        &lt;ButtonWrapper&gt;
+          &lt;Label hasPadding&gt;
+            {&#x27;start&#x27;}
+          &lt;/Label&gt;
+          &lt;StartStrictButton
+            startButton
+            disabled={!props.power || props.counter}
+            power={props.power}
+            startGame={props.startGameAction}
+          /&gt;
+        &lt;/ButtonWrapper&gt;
+        &lt;ButtonWrapper&gt;
+          &lt;Label hasPadding&gt;
+            {&#x27;strict&#x27;}
+          &lt;/Label&gt;
+          &lt;StartStrictButton
+            startButton={false}
+            disabled={!props.power}
+            power={props.power}
+          /&gt;
+        &lt;/ButtonWrapper&gt;
+      &lt;/ButtonsRow&gt;
+      &lt;ButtonsRow&gt;
+        &lt;Label hasMargin&gt;
+          {&#x27;off&#x27;}
+        &lt;/Label&gt;
+        &lt;OnOffSwitch power={props.power} powerOnOff={props.powerOnOffAction} /&gt;
+        &lt;Label hasMargin&gt;
+          {&#x27;on&#x27;}
+        &lt;/Label&gt;
+      &lt;/ButtonsRow&gt;
+    &lt;/BottomHalf&gt;
+  &lt;/Wrapper&gt;;
+</textarea></div></div><div class="row centered"><footer>Flow Coverage Report generated by<a href="https://flowtype.org"> flow </a>and<a href="https://github.com/rpl/flow-coverage-report"> flow-coverage-report </a>at Mon Sep 25 2017 12:28:36 GMT-0500 (CDT)</footer></div></div><pre id="file-coverage-data" style="display:none;">{&quot;expressions&quot;:{&quot;covered_count&quot;:72,&quot;uncovered_count&quot;:0,&quot;uncovered_locs&quot;:[]},&quot;filename&quot;:&quot;src/components/CenterConsole.js&quot;,&quot;percent&quot;:100}</pre></body></html>
