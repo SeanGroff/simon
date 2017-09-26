@@ -46,8 +46,7 @@ const StyledLight = styled.div`
   }
 `;
 
-const Light = (props: Props) =>
-  <StyledLight onClick={() => console.log('click ', props.id)} {...props} />;
+const Light = (props: Props) => <StyledLight {...props} />;
 
 Light.defaultProps = {
   animate: false,

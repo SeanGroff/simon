@@ -1,25 +1,23 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import powerOnOffAction from '../actions/powerOnOffAction';
-import startGameAction from '../actions/startGameAction';
+import { startGameThunk } from '../actions/startGameAction';
+import { roundSuccessThunk } from '../actions/roundSuccessAction';
 import { nextTurnThunk } from '../actions/nextTurnAction';
 import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
 
 type Props = {
   powerOnOffAction(payload: boolean): { type: string, payload: boolean },
-  startGameAction(randomNumber: number): { type: string, payload: number },
+  startGameThunk(): any,
+  roundSuccessThunk(): any,
   nextTurnThunk(): any,
   power: boolean,
   counter: number,
   lightSequence: ?(number[]),
-  playerTurn: boolean,
-};
-
-type State = {
   playerTurn: boolean,
 };
 
@@ -46,34 +44,18 @@ const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
       powerOnOffAction,
-      startGameAction,
+      startGameThunk,
+      roundSuccessThunk,
       nextTurnThunk,
     },
     dispatch,
   );
 
-export class Simon extends Component<Props, State> {
-  state: State = { playerTurn: false };
-
-  componentWillUpdate(nextProps: Props) {
-    if (
-      nextProps.lightSequence !== this.props.lightSequence &&
-      nextProps.lightSequence &&
-      nextProps.lightSequence.length
-    ) {
-      nextProps.nextTurnThunk();
-    }
-  }
-
-  render() {
-    return (
-      <SimonContainer>
-        <LightsWrapper {...this.props} />
-        <CenterConsole {...this.props} />
-      </SimonContainer>
-    );
-  }
-}
+export const Simon = (props: Props) =>
+  <SimonContainer>
+    <LightsWrapper {...props} />
+    <CenterConsole {...props} />
+  </SimonContainer>;
 
 const EnhancedSimon = connect(mapStateToProps, mapDispatchToProps)(Simon);
 

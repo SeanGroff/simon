@@ -8,8 +8,8 @@ import OnOffSwitch from './OnOffSwitch';
 type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
-  powerOnOffAction(): { type: string, payload: boolean },
-  startGameAction(randomNumber: number): { type: string, payload: number },
+  powerOnOffAction(power: boolean): { type: string, payload: boolean },
+  startGameThunk(): any,
   power: boolean,
   counter: number,
 };
@@ -101,7 +101,7 @@ export default (props: Props) =>
             startButton
             disabled={!props.power || props.counter}
             power={props.power}
-            startGame={props.startGameAction}
+            startGame={props.startGameThunk}
           />
         </ButtonWrapper>
         <ButtonWrapper>

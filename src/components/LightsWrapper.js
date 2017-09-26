@@ -5,7 +5,8 @@ import Light from './Light';
 
 type Props = {
   powerOnOffAction(payload: boolean): { type: string, payload: boolean },
-  startGameAction(randomNumber: number): { type: string, payload: number },
+  startGameThunk(): any,
+  roundSuccessThunk(): any,
   nextTurnThunk(): any,
   power: boolean,
   counter: number,
@@ -27,16 +28,17 @@ export default class Lights extends Component<Props, State> {
 
   state = { lightOn: 100 };
 
+  /**
+   *
+   * @todo fix this lifecycle method if statement
+   *
+   * @param {Props} { playerTurn, lightSequence }
+   * @memberof Lights
+   */
   componentWillReceiveProps({ playerTurn, lightSequence }: Props) {
-    if (lightSequence && lightSequence.length) {
-      lightSequence.forEach((light: number): void => {
-        console.log(light);
-        this.setState((prevState, props) => ({
-          lightOn: light,
-        }));
-      });
-    }
-
+    /**
+     * Resets the lights before the Players turn
+     */
     if (playerTurn && lightSequence && lightSequence.length) {
       lightSequence.forEach((light: number): void => {
         this.setState((prevState, props) => ({
@@ -44,12 +46,38 @@ export default class Lights extends Component<Props, State> {
         }));
       });
     }
+
+    /**
+     * Sets the state to the light that should light up in the sequence
+     */
+    if (lightSequence && lightSequence.length) {
+      lightSequence.forEach((light: number): void => {
+        this.setState((prevState, props) => ({
+          lightOn: light,
+        }));
+      });
+    }
   }
 
   clickHandler(id: number) {
+    const lightSeq = this.props.lightSequence;
     this.setState((prevState, props) => ({
       lightOn: id,
     }));
+
+    if (lightSeq && lightSeq.length) {
+      console.log('id: ', id);
+      console.log('lightSeq: ', lightSeq);
+      const results = lightSeq.filter(light => light === id);
+      console.log('results: ', results);
+      if (results && results.length === lightSeq.length) {
+        console.log('success!');
+        this.props.roundSuccessThunk();
+      } else {
+        console.log('WRONG!');
+        // fire INCORRECT_CHOICE action
+      }
+    }
   }
 
   render() {

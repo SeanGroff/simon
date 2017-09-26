@@ -10,12 +10,10 @@ ShallowWrapper {
   "length": 1,
   "node": <styled.button
     onClick={[Function]}
-    startButton={true}
 />,
   "nodes": Array [
     <styled.button
       onClick={[Function]}
-      startButton={true}
 />,
   ],
   "options": Object {},
@@ -24,18 +22,14 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 2,
       "_context": Object {},
-      "_currentElement": <StartStrictButton
-        startButton={true}
-/>,
+      "_currentElement": <StartStrictButton />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": StatelessComponent {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "startButton": true,
-        },
+        "props": Object {},
         "refs": Object {},
         "state": null,
         "updater": Object {
@@ -58,12 +52,10 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <styled.button
           onClick={[Function]}
-          startButton={true}
 />,
         "_debugID": 2,
         "_renderedOutput": <styled.button
           onClick={[Function]}
-          startButton={true}
 />,
       },
       "_renderedNodeType": 1,
@@ -76,8 +68,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <StartStrictButton
-    startButton={true}
-/>,
+  "unrendered": <StartStrictButton />,
 }
 `;
