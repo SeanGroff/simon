@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Light from './Light';
+import { getSequenceOfRandomNumbers, playSequence } from '../utils/logic';
 
 type Props = {
-  powerOnOffAction(payload: boolean): { type: string, payload: boolean },
+  toggleGamePowerAction(payload: boolean): { type: string, payload: boolean },
   startGameThunk(): any,
   roundSuccessThunk(): any,
   nextTurnThunk(): any,
@@ -14,7 +15,11 @@ type Props = {
   playerTurn: boolean,
 };
 
-type State = { lightOn: number };
+type State = {
+  sequence: ?(number[]),
+  clickable: boolean,
+  lightOn: number,
+};
 
 const LightsWrapper = styled.div`position: relative;`;
 
@@ -24,9 +29,32 @@ export default class Lights extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     (this: any).clickHandler = this.clickHandler.bind(this);
+    (this: any).toggleClickable = this.toggleClickable.bind(this);
+    (this: any).playSequence = this.playSequence.bind(this);
   }
 
-  state = { lightOn: 100 };
+  /**
+   * @todo change lightOn to lightSequence
+   *
+   * @memberof Lights
+   */
+  state = {
+    sequence: [],
+    clickable: false,
+    lightOn: 100,
+  };
+
+  /**
+   * @todo When the component mounts GET an Array of random numbers
+   *  with a size of 25 and set the lightSequence local state to that Array
+   *
+   * @memberof Lights
+   */
+  componentWillMount() {
+    // this.setState(() => ({
+    //   sequence: getSequenceOfRandomNumbers(),
+    // }));
+  }
 
   /**
    *
@@ -35,58 +63,80 @@ export default class Lights extends Component<Props, State> {
    * @param {Props} { playerTurn, lightSequence }
    * @memberof Lights
    */
-  componentWillReceiveProps({ playerTurn, lightSequence }: Props) {
+  componentWillReceiveProps({ playerTurn, lightSequence, counter }: Props) {
     /**
      * Resets the lights before the Players turn
      */
-    if (playerTurn && lightSequence && lightSequence.length) {
-      lightSequence.forEach((light: number): void => {
-        this.setState((prevState, props) => ({
-          lightOn: 100,
-        }));
-      });
-    }
-
+    // if (playerTurn && lightSequence && lightSequence.length) {
+    //   lightSequence.forEach((light: number): void => {
+    //     this.setState((prevState, props) => ({
+    //       lightOn: 100,
+    //     }));
+    //   });
+    // }
     /**
      * Sets the state to the light that should light up in the sequence
      */
-    if (lightSequence && lightSequence.length) {
-      lightSequence.forEach((light: number): void => {
-        this.setState((prevState, props) => ({
-          lightOn: light,
-        }));
-      });
-    }
+    // if (
+    //   !playerTurn &&
+    //   counter &&
+    //   this.state.sequence &&
+    //   this.state.sequence.length
+    // ) {
+    //   this.playSequence();
+    // }
   }
 
-  clickHandler(id: number) {
-    const lightSeq = this.props.lightSequence;
-    this.setState((prevState, props) => ({
-      lightOn: id,
-    }));
+  clickHandler(id) {
+    console.log('click');
+    // this.lightUp(id);
+    // const lightSeq = this.props.lightSequence;
+    // this.setState((prevState, props) => ({
+    //   lightOn: id,
+    // }));
 
-    if (lightSeq && lightSeq.length) {
-      console.log('id: ', id);
-      console.log('lightSeq: ', lightSeq);
-      const results = lightSeq.filter(light => light === id);
-      console.log('results: ', results);
-      if (results && results.length === lightSeq.length) {
-        console.log('success!');
-        this.props.roundSuccessThunk();
-      } else {
-        console.log('WRONG!');
-        // fire INCORRECT_CHOICE action
-      }
-    }
+    // if (lightSeq && lightSeq.length) {
+    //   const results = lightSeq.filter(light => light === id);
+    //   if (results && results.length === lightSeq.length) {
+    //     console.log('success!');
+    //     this.props.roundSuccessThunk();
+    //   } else {
+    //     console.log('WRONG!');
+    //     // fire INCORRECT_CHOICE action
+    //   }
+    // }
+  }
+
+  toggleClickable(isClickable: boolean) {
+    // this.setState(() => ({
+    //   clickable: isClickable,
+    // }));
+  }
+
+  playSequence() {
+    // const seq = this.state.sequence;
+    // this.toggleClickable(false);
+    // if (seq && seq.length) {
+    //   seq.forEach((light: number): void => {
+    //     setTimeout(
+    //       this.setState(() => ({
+    //         lightOn: light,
+    //       })),
+    //       500,
+    //     );
+    //   });
+    // }
+    // setTimeout(this.toggleClickable(true), this.props.counter * 1000);
   }
 
   render() {
+    const lightOn = this.state.lightOn;
     return (
       <LightsWrapper>
         <LightsRow>
           <Light
             id={0}
-            animate={this.state.lightOn === 0}
+            animate={lightOn === 0}
             topLeft
             clickable={this.props.playerTurn}
             color="#00A74A"
@@ -95,7 +145,7 @@ export default class Lights extends Component<Props, State> {
           />
           <Light
             id={1}
-            animate={this.state.lightOn === 1}
+            animate={lightOn === 1}
             topRight
             clickable={this.props.playerTurn}
             color="#9F0F17"
@@ -106,7 +156,7 @@ export default class Lights extends Component<Props, State> {
         <LightsRow>
           <Light
             id={2}
-            animate={this.state.lightOn === 2}
+            animate={lightOn === 2}
             bottomLeft
             clickable={this.props.playerTurn}
             color="#CCA707"
@@ -115,7 +165,7 @@ export default class Lights extends Component<Props, State> {
           />
           <Light
             id={3}
-            animate={this.state.lightOn === 3}
+            animate={lightOn === 3}
             bottomRight
             clickable={this.props.playerTurn}
             color="#094A8F"

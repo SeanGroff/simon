@@ -11,3 +11,15 @@ export const getRandomColor = (): string => {
   const arrColors: string[] = ['Green', 'Red', 'Yellow', 'Blue'];
   return arrColors[getRandomNumber()];
 };
+
+export const getSequenceOfRandomNumbers = (): number[] => {
+  const len: number = 25;
+  const arrSequence: ?(number[]) = [];
+  if (Array.isArray(arrSequence)) {
+    for (let i: number = 0; i < len; i += 1) {
+      arrSequence.push(getRandomNumber());
+    }
+    return arrSequence;
+  }
+  return [];
+};

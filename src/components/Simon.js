@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import powerOnOffAction from '../actions/powerOnOffAction';
+import toggleGamePowerAction from '../actions/toggleGamePowerAction';
 import { startGameThunk } from '../actions/startGameAction';
 import { roundSuccessThunk } from '../actions/roundSuccessAction';
 import { nextTurnThunk } from '../actions/nextTurnAction';
@@ -11,7 +11,7 @@ import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
 
 type Props = {
-  powerOnOffAction(payload: boolean): { type: string, payload: boolean },
+  toggleGamePowerAction(payload: boolean): { type: string, payload: boolean },
   startGameThunk(): any,
   roundSuccessThunk(): any,
   nextTurnThunk(): any,
@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      powerOnOffAction,
+      toggleGamePowerAction,
       startGameThunk,
       roundSuccessThunk,
       nextTurnThunk,

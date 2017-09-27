@@ -8,7 +8,7 @@ import OnOffSwitch from './OnOffSwitch';
 type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
-  powerOnOffAction(power: boolean): { type: string, payload: boolean },
+  toggleGamePowerAction(power: boolean): { type: string, payload: boolean },
   startGameThunk(): any,
   power: boolean,
   counter: number,
@@ -119,7 +119,10 @@ export default (props: Props) =>
         <Label hasMargin>
           {'off'}
         </Label>
-        <OnOffSwitch power={props.power} powerOnOff={props.powerOnOffAction} />
+        <OnOffSwitch
+          power={props.power}
+          powerOnOff={props.toggleGamePowerAction}
+        />
         <Label hasMargin>
           {'on'}
         </Label>

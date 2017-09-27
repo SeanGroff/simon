@@ -1,7 +1,7 @@
 // @flow
 import {
   START_GAME,
-  POWER_ON_OFF,
+  TOGGLE_GAME_POWER,
   NEXT_TURN,
   ROUND_SUCCESS,
 } from './constants';
@@ -11,8 +11,8 @@ export type StartGameAction = {
   payload: number,
 };
 
-export type PowerOnOffAction = {
-  type: typeof POWER_ON_OFF,
+export type ToggleGamePowerAction = {
+  type: typeof TOGGLE_GAME_POWER,
   payload: boolean,
 };
 
