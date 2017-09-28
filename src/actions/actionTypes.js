@@ -2,7 +2,7 @@
 import {
   START_GAME,
   TOGGLE_GAME_POWER,
-  NEXT_TURN,
+  START_NEXT_ROUND,
   ROUND_SUCCESS,
 } from './constants';
 
@@ -15,9 +15,8 @@ export type ToggleGamePowerAction = {
   payload: boolean,
 };
 
-export type NextTurnAction = {
-  type: typeof NEXT_TURN,
-  payload: boolean,
+export type StartNextRoundAction = {
+  type: typeof START_NEXT_ROUND,
 };
 
 export type RoundSuccessAction = {

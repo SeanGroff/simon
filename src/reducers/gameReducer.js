@@ -4,15 +4,19 @@ import type State from '../store';
 import type {
   StartGameAction,
   ToggleGamePowerAction,
-  NextTurnAction,
+  StartNextRoundAction,
   RoundSuccessAction,
 } from '../actions/actionTypes';
-import { TOGGLE_GAME_POWER, START_GAME } from '../actions/constants';
+import {
+  TOGGLE_GAME_POWER,
+  START_GAME,
+  START_NEXT_ROUND,
+} from '../actions/constants';
 
 type Action =
   | StartGameAction
   | ToggleGamePowerAction
-  | NextTurnAction
+  | StartNextRoundAction
   | RoundSuccessAction;
 
 export default (gameState: State = initialState, action: Action) => {
@@ -24,6 +28,12 @@ export default (gameState: State = initialState, action: Action) => {
       return { ...initialState };
     case START_GAME:
       return { ...gameState, gameStarted: true };
+    case START_NEXT_ROUND:
+      return {
+        ...gameState,
+        counter: gameState.counter + 1,
+        playerTurn: false,
+      };
     default:
       return gameState;
   }

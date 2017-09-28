@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toggleGamePowerAction from '../actions/toggleGamePowerAction';
 import { startGameAction } from '../actions/startGameAction';
+import { startNextRoundAction } from '../actions/startNextRoundAction';
 import { roundSuccessThunk } from '../actions/roundSuccessAction';
-import { nextTurnThunk } from '../actions/nextTurnAction';
 import LightsWrapper from './LightsWrapper';
 import CenterConsole from './CenterConsole';
 
@@ -14,7 +14,7 @@ type Props = {
   toggleGamePowerAction(payload: boolean): { type: string, payload: boolean },
   startGameAction(): { type: string },
   roundSuccessThunk(): any,
-  nextTurnThunk(): any,
+  startNextRoundAction(): { type: string },
   power: boolean,
   counter: number,
   lightSequence: ?(number[]),
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch: *) =>
       toggleGamePowerAction,
       startGameAction,
       roundSuccessThunk,
-      nextTurnThunk,
+      startNextRoundAction,
     },
     dispatch,
   );

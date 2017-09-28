@@ -15,6 +15,9 @@ export const startGameAction = (): Action => ({
   type: START_GAME,
 });
 
+/**
+ * @todo Finish startGameThunk (See comments)
+ */
 // export function startGameThunk() {
 //   return (dispatch: *, getState: *) => {
 //     const { playerTurn, counter }: Args = getState();

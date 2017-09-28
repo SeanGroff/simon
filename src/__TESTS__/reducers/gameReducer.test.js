@@ -1,5 +1,9 @@
 import { initialState } from '../../store';
-import { TOGGLE_GAME_POWER, START_GAME } from '../../actions/constants';
+import {
+  TOGGLE_GAME_POWER,
+  START_GAME,
+  START_NEXT_ROUND,
+} from '../../actions/constants';
 import reducer from '../../reducers/gameReducer';
 
 describe('Game reducer', () => {
@@ -26,6 +30,15 @@ describe('Game reducer', () => {
     expect(reducer(mockState, action)).toEqual({
       ...mockState,
       gameStarted: true,
+    });
+  });
+  it('should handle START_NEXT_ROUND action', () => {
+    const mockState = initialState;
+    const action = { type: START_NEXT_ROUND };
+    expect(reducer(mockState, action)).toEqual({
+      ...mockState,
+      counter: mockState.counter + 1,
+      playerTurn: false,
     });
   });
 });
