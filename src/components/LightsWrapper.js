@@ -2,11 +2,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Light from './Light';
-import { getSequenceOfRandomNumbers, playSequence } from '../utils/logic';
+// import { getSequenceOfRandomNumbers, playSequence } from '../utils/logic';
 
 type Props = {
   toggleGamePowerAction(payload: boolean): { type: string, payload: boolean },
-  startGameThunk(): any,
+  startGameAction(): { type: string },
   roundSuccessThunk(): any,
   nextTurnThunk(): any,
   power: boolean,

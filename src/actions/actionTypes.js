@@ -8,7 +8,6 @@ import {
 
 export type StartGameAction = {
   type: typeof START_GAME,
-  payload: number,
 };
 
 export type ToggleGamePowerAction = {

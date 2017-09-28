@@ -6,7 +6,7 @@ type Props = {
   startButton: boolean,
   disabled: number | boolean,
   power: boolean,
-  startGame(): any,
+  startGame(): { type: string },
 };
 
 const StyledButton = styled.button`

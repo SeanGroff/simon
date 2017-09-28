@@ -9,7 +9,7 @@ type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
   toggleGamePowerAction(power: boolean): { type: string, payload: boolean },
-  startGameThunk(): any,
+  startGameAction(): { type: string },
   power: boolean,
   counter: number,
 };
@@ -101,7 +101,7 @@ export default (props: Props) =>
             startButton
             disabled={!props.power || props.counter}
             power={props.power}
-            startGame={props.startGameThunk}
+            startGame={props.startGameAction}
           />
         </ButtonWrapper>
         <ButtonWrapper>

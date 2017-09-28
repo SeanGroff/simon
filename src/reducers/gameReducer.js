@@ -1,7 +1,13 @@
 // @flow
 import { initialState } from '../store';
 import type State from '../store';
-import { TOGGLE_GAME_POWER } from '../actions/constants';
+import type {
+  StartGameAction,
+  ToggleGamePowerAction,
+  NextTurnAction,
+  RoundSuccessAction,
+} from '../actions/actionTypes';
+import { TOGGLE_GAME_POWER, START_GAME } from '../actions/constants';
 
 type Action =
   | StartGameAction
@@ -16,6 +22,8 @@ export default (gameState: State = initialState, action: Action) => {
         return { ...gameState, power: action.payload };
       }
       return { ...initialState };
+    case START_GAME:
+      return { ...gameState, gameStarted: true };
     default:
       return gameState;
   }
