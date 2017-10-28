@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 type Props = {
   on: boolean,
-  count: number,
+  count: number | null,
 };
 
 const StyledCounter = styled.div`
@@ -19,10 +19,9 @@ const StyledCounter = styled.div`
   color: ${(props: Props) => (props.on ? '#DC0D29' : '#430710')};
 `;
 
-const Counter = (props: Props) =>
-  <StyledCounter {...props}>
-    {props.count || '--'}
-  </StyledCounter>;
+const Counter = (props: Props) => (
+  <StyledCounter {...props}>{props.count || '--'}</StyledCounter>
+);
 
 Counter.defaultProps = {
   count: 0,

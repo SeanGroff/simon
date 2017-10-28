@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import Simon from './components/Simon';
+import SimonContainer from './containers/SimonContainer';
 
 const App = styled.div`
   display: flex;
@@ -13,7 +13,8 @@ const App = styled.div`
 `;
 
 /** */
-export default (props: {}) =>
+export default (props: {}) => (
   <App>
-    <Simon {...props} />
-  </App>;
+    <SimonContainer {...props} />
+  </App>
+);

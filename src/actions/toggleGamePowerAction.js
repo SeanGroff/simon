@@ -1,10 +1,10 @@
-// @flow
-import type { ToggleGamePowerAction } from '../types/types';
-import { TOGGLE_GAME_POWER } from './constants';
+// // @flow
+// import type { ToggleGamePowerAction } from '../types/types';
+// import { TOGGLE_GAME_POWER } from './constants';
 
-type Action = ToggleGamePowerAction;
+// type Action = ToggleGamePowerAction;
 
-export default (payload: boolean): Action => ({
-  type: TOGGLE_GAME_POWER,
-  payload,
-});
+// export default (payload: boolean): Action => ({
+//   type: TOGGLE_GAME_POWER,
+//   payload,
+// });

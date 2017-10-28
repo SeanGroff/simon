@@ -8,8 +8,8 @@ import OnOffSwitch from './OnOffSwitch';
 type Props = {
   hasMargin?: boolean,
   hasPadding?: boolean,
-  toggleGamePowerAction(power: boolean): { type: string, payload: boolean },
-  startGameAction(): { type: string },
+  toggleGamePower(power: boolean): { type: string, payload: boolean },
+  startGameThunk(): { type: string }, // fix
   power: boolean,
   counter: number,
 };
@@ -78,36 +78,28 @@ const Label = styled.label`
   text-align: center;
 `;
 
-export default (props: Props) =>
+export default (props: Props) => (
   <Wrapper>
     <TopHalf>
-      <Header>
-        {'simon'}
-      </Header>
+      <Header>{'simon'}</Header>
     </TopHalf>
     <BottomHalf>
       <ButtonsRow>
         <ButtonWrapper>
-          <Label hasPadding>
-            {'count'}
-          </Label>
+          <Label hasPadding>{'count'}</Label>
           <Counter count={props.counter} on={props.power} />
         </ButtonWrapper>
         <ButtonWrapper>
-          <Label hasPadding>
-            {'start'}
-          </Label>
+          <Label hasPadding>{'start'}</Label>
           <StartStrictButton
             startButton
             disabled={!props.power || props.counter}
             power={props.power}
-            startGame={props.startGameAction}
+            startGame={props.startGameThunk}
           />
         </ButtonWrapper>
         <ButtonWrapper>
-          <Label hasPadding>
-            {'strict'}
-          </Label>
+          <Label hasPadding>{'strict'}</Label>
           <StartStrictButton
             startButton={false}
             disabled={!props.power}
@@ -116,16 +108,10 @@ export default (props: Props) =>
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>
-        <Label hasMargin>
-          {'off'}
-        </Label>
-        <OnOffSwitch
-          power={props.power}
-          powerOnOff={props.toggleGamePowerAction}
-        />
-        <Label hasMargin>
-          {'on'}
-        </Label>
+        <Label hasMargin>{'off'}</Label>
+        <OnOffSwitch power={props.power} powerOnOff={props.toggleGamePower} />
+        <Label hasMargin>{'on'}</Label>
       </ButtonsRow>
     </BottomHalf>
-  </Wrapper>;
+  </Wrapper>
+);
