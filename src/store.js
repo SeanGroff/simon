@@ -3,28 +3,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import gameReducer from './reducers/gameReducer';
-
-type State = {
-  +power: boolean,
-  +strictMode: boolean,
-  +gameStarted: boolean,
-  +gameOver: boolean,
-  +playerWrongButtonPress: boolean,
-  +startNextRound: boolean,
-  +currentIndex: number,
-  +activeColor: ?string,
-  +counter: number,
-  +lightSequence: ?(number[]),
-  +playerTurn: boolean,
-};
+import type { StoreState } from './types/types';
 
 /**
  * State structure
  */
-export const initialState: State = {
-  /**
-   * @todo Implement commented out state properties
-   */
+export const initialState: StoreState = {
   power: false,
   strictMode: false,
   gameStarted: false,
@@ -38,7 +22,6 @@ export const initialState: State = {
   playerTurn: false,
 };
 
-/* eslint-disable no-underscore-dangle */
 const store = createStore(
   gameReducer,
   initialState,

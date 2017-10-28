@@ -1,5 +1,5 @@
 // @flow
-import type { ToggleGamePowerAction } from './actionTypes';
+import type { ToggleGamePowerAction } from '../types/types';
 import { TOGGLE_GAME_POWER } from './constants';
 
 type Action = ToggleGamePowerAction;
