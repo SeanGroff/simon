@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 type Props = {
-  id: number,
   animate: boolean,
   color: string,
   lightUpColor: string,
