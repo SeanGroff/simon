@@ -5,8 +5,8 @@ import styled from 'styled-components';
 type Props = {
   startButton: boolean,
   disabled: number | boolean,
-  power: boolean,
   startGame(): { type: string },
+  playSequenceThunk(): any,
 };
 
 const StyledButton = styled.button`
@@ -31,10 +31,11 @@ const StyledButton = styled.button`
   }
 `;
 
-const StartStrictButton = (props: Props) => {
+export default function startStrictButton(props: Props) {
   const clickHandler = () => {
     if (props.startButton) {
       props.startGame();
+      props.playSequenceThunk();
     } else {
       /**
        * @todo strictGame()
@@ -42,6 +43,4 @@ const StartStrictButton = (props: Props) => {
     }
   };
   return <StyledButton onClick={clickHandler} {...props} />;
-};
-
-export default StartStrictButton;
+}

@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Counter from './Counter';
-import StartStrictButton from './StartStrictButton';
+import StartStrictContainer from '../containers/StartStrictContainer';
 import OnOffSwitch from './OnOffSwitch';
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   hasPadding?: boolean,
   toggleGamePower(power: boolean): { type: string, payload: boolean },
   startGameThunk(): { type: string }, // fix
+  playSequenceThunk(): any,
   power: boolean,
   counter: number,
 };
@@ -91,20 +92,15 @@ export default (props: Props) => (
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>{'start'}</Label>
-          <StartStrictButton
+          <StartStrictContainer
             startButton
             disabled={!props.power || props.counter}
-            power={props.power}
             startGame={props.startGameThunk}
           />
         </ButtonWrapper>
         <ButtonWrapper>
           <Label hasPadding>{'strict'}</Label>
-          <StartStrictButton
-            startButton={false}
-            disabled={!props.power}
-            power={props.power}
-          />
+          <StartStrictContainer startButton={false} disabled={!props.power} />
         </ButtonWrapper>
       </ButtonsRow>
       <ButtonsRow>

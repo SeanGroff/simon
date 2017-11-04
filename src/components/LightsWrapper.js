@@ -28,15 +28,18 @@ export default class Lights extends Component<Props, State> {
     activeLight: '',
   };
 
-  componentWillReceieveProps({ lights }: string[]) {
-    this.setState(() => ({
-      activeLight: lights.reduce((accum, light) => {
-        if (light.active) {
-          return light.color;
-        }
-        return accum;
-      }, ''),
-    }));
+  componentWillReceiveProps({ counter, lights }) {
+    console.log(lights);
+    if (counter) {
+      this.setState(() => ({
+        activeLight: lights.reduce((accum, light) => {
+          if (light.active) {
+            return light.color;
+          }
+          return accum;
+        }, ''),
+      }));
+    }
   }
 
   clickHandler = (color: string) => {

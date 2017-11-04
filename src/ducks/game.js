@@ -108,9 +108,8 @@ function turnLightOff() {
 const playSequenceThunk = payload => (dispatch, getState) => {
   // dispatch(startAudio());
   const { match } = getState();
-  match.all.forEach(async matched => {
-    const color = match.all[matched];
-    dispatch(turnLightOn({ color }));
+  match.sequence.forEach(async color => {
+    dispatch(turnLightOn(color));
     await waitTime(AUDIO_DELAY_TIME);
     dispatch(turnLightOff());
     await waitTime(AUDIO_DELAY_TIME);
@@ -147,6 +146,7 @@ export const actionCreators = {
   // guessColor,
   // guess,
   // sing,
+  playSequenceThunk,
 };
 
 /**

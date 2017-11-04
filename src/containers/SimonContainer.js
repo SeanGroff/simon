@@ -4,11 +4,16 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import LightsWrapper from '../components/LightsWrapper';
+import LightsWrapperContainer from '../containers/LightsWrapperContainer';
 import CenterConsole from '../components/CenterConsole';
 import { actionCreators } from '../ducks/game';
 
-const { toggleGamePower, startGameThunk, nextLevelThunk } = actionCreators;
+const {
+  toggleGamePower,
+  startGameThunk,
+  nextLevelThunk,
+  playSequenceThunk,
+} = actionCreators;
 
 // import toggleGamePowerAction from '../actions/toggleGamePowerAction';
 // import { startGameAction } from '../actions/startGameAction';
@@ -49,17 +54,16 @@ const mapDispatchToProps = (dispatch: *) =>
       toggleGamePower,
       startGameThunk,
       nextLevelThunk,
+      playSequenceThunk,
     },
     dispatch,
   );
 
 export const Simon = (props: any) => (
   <SimonContainer>
-    <LightsWrapper {...props} />
+    <LightsWrapperContainer {...props} />
     <CenterConsole {...props} />
   </SimonContainer>
 );
 
-const EnhancedSimon = connect(mapStateToProps, mapDispatchToProps)(Simon);
-
-export default EnhancedSimon;
+export default connect(mapStateToProps, mapDispatchToProps)(Simon);

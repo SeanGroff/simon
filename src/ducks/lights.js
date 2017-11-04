@@ -1,5 +1,5 @@
-const LIGHT_ON = 'LIGHT_ON';
-const LIGHT_OFF = 'LIGHT_OFF';
+const TURN_LIGHT_ON = 'TURN_LIGHT_ON';
+const TURN_LIGHT_OFF = 'TURN_LIGHT_OFF';
 const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
 
 /**
@@ -10,7 +10,7 @@ const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
  */
 function lightOn(color: string) {
   return {
-    type: LIGHT_ON,
+    type: TURN_LIGHT_ON,
     payload: color,
   };
 }
@@ -22,7 +22,7 @@ function lightOn(color: string) {
  */
 function lightOff() {
   return {
-    type: LIGHT_OFF,
+    type: TURN_LIGHT_OFF,
   };
 }
 
@@ -47,8 +47,8 @@ const initialState = [
 ];
 
 export const actionTypes = {
-  LIGHT_ON,
-  LIGHT_OFF,
+  TURN_LIGHT_ON,
+  TURN_LIGHT_OFF,
 };
 
 export const actionCreators = {
@@ -61,17 +61,17 @@ export default function reducer(state = initialState, action) {
   switch (type) {
     case TOGGLE_GAME_POWER:
       if (!payload.power) {
-        return { ...initialState };
+        return initialState;
       }
-      return { ...state };
+      return state;
 
-    case LIGHT_ON:
+    case TURN_LIGHT_ON:
       return state.map(light => ({
         ...light,
-        active: payload.color === light.color,
+        active: payload === light.color,
       }));
 
-    case LIGHT_OFF:
+    case TURN_LIGHT_OFF:
       return state.map(light => ({
         ...light,
         active: false,
