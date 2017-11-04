@@ -4,5 +4,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 **TO-DO NEXT**
 
+* Implement match duck
 * Make Simon sing! (`singThunk()`)
 * Fix tests

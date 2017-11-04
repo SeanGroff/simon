@@ -1,6 +1,6 @@
-// import waitTime from '../utils/waitTime';
+import waitTime from '../utils/waitTime';
 import getRandomColor from '../utils/getRandomColor';
-// import { AUDIO_DELAY_TIME, REDUCED_DELAY_TIME } from '../constants';
+import { AUDIO_DELAY_TIME /*, REDUCED_DELAY_TIME */ } from '../constants';
 
 const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
 const START_GAME = 'START_GAME';
@@ -9,6 +9,8 @@ const START_AUDIO = 'START_AUDIO';
 const FINISH_AUDIO = 'FINISH_AUDIO';
 const GUESS_COLOR = 'GUESS_COLOR';
 const NEXT_LEVEL = 'NEXT_LEVEL';
+const TURN_LIGHT_ON = 'TURN_LIGHT_ON';
+const TURN_LIGHT_OFF = 'TURN_LIGHT_OFF';
 
 /**
  * Toggle Game Power Action Creator
@@ -75,25 +77,46 @@ function nextLevelThunk() {
   };
 }
 
+/**
+ * Turn Light On Action Creator
+ *
+ * @param {string} color 
+ * @returns { type: {TURN_LIGHT_ON}, payload: {string} }
+ */
+function turnLightOn(color: string) {
+  return {
+    type: TURN_LIGHT_ON,
+    payload: color,
+  };
+}
+
+/**
+ * Turn Light Off Action Creator
+ *
+ * @returns { type: TURN_LIGHT_OFF }
+ */
+function turnLightOff() {
+  return {
+    type: TURN_LIGHT_OFF,
+  };
+}
+
 // const guessColor = createAction(GUESS_COLOR);
 // const startAudio = createAction(START_AUDIO);
 // const finishAudio = createAction(FINISH_AUDIO);
-// const lightenPad = createAction(LIGHTEN_PAD);
-// const lightenOffPad = createAction(LIGHTEN_OFF_PAD);
 
-// const sing = payload => async (dispatch, getState) => {
-//   dispatch(startAudio());
-//   const { match } = getState();
-//   for (let i = 0; i <= match.all.length - 1; i++) {
-//     const color = match.all[i];
-//     dispatch(lightenPad({ color }));
-//     await waitTime(AUDIO_DELAY_TIME);
-//     dispatch(lightenOffPad());
-//     await waitTime(AUDIO_DELAY_TIME);
-//   }
-
-//   dispatch(finishAudio());
-// };
+const playSequenceThunk = payload => (dispatch, getState) => {
+  // dispatch(startAudio());
+  const { match } = getState();
+  match.all.forEach(async matched => {
+    const color = match.all[matched];
+    dispatch(turnLightOn({ color }));
+    await waitTime(AUDIO_DELAY_TIME);
+    dispatch(turnLightOff());
+    await waitTime(AUDIO_DELAY_TIME);
+  });
+  //   dispatch(finishAudio());
+};
 
 // const guess = ({ succeeded, color }) => async (dispatch, getState) => {
 //   dispatch(guessColor({ succeeded, color }));
@@ -157,7 +180,7 @@ const initialState = {
  * @param {any} action
  * @returns { state }
  */
-export default function game(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_GAME_POWER:

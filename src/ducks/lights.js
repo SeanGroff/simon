@@ -1,5 +1,6 @@
 const LIGHT_ON = 'LIGHT_ON';
 const LIGHT_OFF = 'LIGHT_OFF';
+const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
 
 /**
  * Light On Action Creator
@@ -55,9 +56,15 @@ export const actionCreators = {
   lightOff,
 };
 
-export default function lights(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case TOGGLE_GAME_POWER:
+      if (!payload.power) {
+        return { ...initialState };
+      }
+      return { ...state };
+
     case LIGHT_ON:
       return state.map(light => ({
         ...light,
