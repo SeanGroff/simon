@@ -9,6 +9,7 @@ const { startGameThunk, playSequenceThunk } = actionCreators;
 const mapStateToProps = state => ({
   lights: state.lights,
   counter: state.game.counter,
+  audioPlaying: state.game.audioPlaying,
 });
 
 const mapDispatchToProps = (dispatch: *) =>

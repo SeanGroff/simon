@@ -100,21 +100,44 @@ function turnLightOff() {
     type: TURN_LIGHT_OFF,
   };
 }
-
-// const guessColor = createAction(GUESS_COLOR);
 // const startAudio = createAction(START_AUDIO);
 // const finishAudio = createAction(FINISH_AUDIO);
 
-const playSequenceThunk = payload => (dispatch, getState) => {
-  // dispatch(startAudio());
+/**
+ * Start Audio Action Creator
+ *
+ * @returns { type: START_AUDIO }
+ */
+function startAudio() {
+  return {
+    type: START_AUDIO,
+  };
+}
+
+/**
+ * Finish Audio Action Creator
+ *
+ * @returns { type: FINISH_AUDIO }
+ */
+function finishAudio() {
+  return {
+    type: FINISH_AUDIO,
+  };
+}
+
+// const guessColor = createAction(GUESS_COLOR);
+
+const playSequenceThunk = payload => async (dispatch, getState) => {
+  dispatch(startAudio());
   const { match } = getState();
-  match.sequence.forEach(async color => {
+  for (let i = 0; i < match.sequence.length; i += 1) {
+    const color = match.sequence[i];
     dispatch(turnLightOn(color));
     await waitTime(AUDIO_DELAY_TIME);
     dispatch(turnLightOff());
     await waitTime(AUDIO_DELAY_TIME);
-  });
-  //   dispatch(finishAudio());
+  }
+  dispatch(finishAudio());
 };
 
 // const guess = ({ succeeded, color }) => async (dispatch, getState) => {
@@ -135,10 +158,10 @@ const playSequenceThunk = payload => (dispatch, getState) => {
 
 export const actionCreators = {
   toggleGamePower,
-  // startAudio,
+  startAudio,
   startGame,
   startGameThunk,
-  // finishAudio,
+  finishAudio,
   // lightenPad,
   // lightenOffPad,
   nextLevel,

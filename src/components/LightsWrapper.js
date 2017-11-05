@@ -9,7 +9,7 @@ type Props = {
   nextThunk(): any,
   power: boolean,
   counter: number,
-  playerTurn: boolean, // audioPlaying
+  audioPlaying: boolean, // audioPlaying
   lights: string[],
 };
 
@@ -49,7 +49,7 @@ export default class Lights extends Component<Props, State> {
 
   render() {
     const activeLight = this.state.activeLight;
-    const playerTurn = this.props.playerTurn;
+    const audioPlaying = this.props.audioPlaying;
     return (
       <LightsWrapper>
         <LightsRow>
@@ -57,7 +57,7 @@ export default class Lights extends Component<Props, State> {
             id={0}
             animate={activeLight === 'green'}
             topLeft
-            clickable={playerTurn} // audioPlaying
+            clickable={!audioPlaying} // audioPlaying
             color="#00A74A"
             lightUpColor="#13ff7c"
             onClick={() => this.clickHandler('green')}
@@ -66,7 +66,7 @@ export default class Lights extends Component<Props, State> {
             id={1}
             animate={activeLight === 'red'}
             topRight
-            clickable={playerTurn}
+            clickable={!audioPlaying}
             color="#9F0F17"
             lightUpColor="#ff4c4c"
             onClick={() => this.clickHandler('red')}
@@ -77,7 +77,7 @@ export default class Lights extends Component<Props, State> {
             id={2}
             animate={activeLight === 'yellow'}
             bottomLeft
-            clickable={playerTurn}
+            clickable={!audioPlaying}
             color="#CCA707"
             lightUpColor="#fed93f"
             onClick={() => this.clickHandler('yellow')}
@@ -86,7 +86,7 @@ export default class Lights extends Component<Props, State> {
             id={3}
             animate={activeLight === 'blue'}
             bottomRight
-            clickable={playerTurn}
+            clickable={!audioPlaying}
             color="#094A8F"
             lightUpColor="#1c8cff"
             onClick={() => this.clickHandler('blue')}
