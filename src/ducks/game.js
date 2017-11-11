@@ -1,6 +1,6 @@
 import waitTime from '../utils/waitTime';
 import getRandomColor from '../utils/getRandomColor';
-import { AUDIO_DELAY_TIME /*, REDUCED_DELAY_TIME */ } from '../constants';
+import { AUDIO_DELAY_TIME, REDUCED_DELAY_TIME } from '../constants';
 
 const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
 const START_GAME = 'START_GAME';
@@ -125,9 +125,21 @@ function finishAudio() {
   };
 }
 
-// const guessColor = createAction(GUESS_COLOR);
+/**
+ * Guess Color Action Creator
+ *
+ * @param { succeeded: boolean, color: string }
+ *
+ * @returns { type: GUESS_COLOR, payload: { succeeded, color }}
+ */
+function guessColor({ succeeded, color }) {
+  return {
+    type: GUESS_COLOR,
+    payload: { succeeded, color },
+  };
+}
 
-const playSequenceThunk = payload => async (dispatch, getState) => {
+const playSequenceThunk = () => async (dispatch, getState) => {
   dispatch(startAudio());
   const { match } = getState();
   for (let i = 0; i < match.sequence.length; i += 1) {
@@ -140,21 +152,21 @@ const playSequenceThunk = payload => async (dispatch, getState) => {
   dispatch(finishAudio());
 };
 
-// const guess = ({ succeeded, color }) => async (dispatch, getState) => {
-//   dispatch(guessColor({ succeeded, color }));
-//   dispatch(startAudio());
-//   dispatch(lightenPad({ color }));
-//   await waitTime(REDUCED_DELAY_TIME);
-//   dispatch(lightenOffPad());
-//   await waitTime(REDUCED_DELAY_TIME);
-//   dispatch(finishAudio());
+const guessThunk = ({ succeeded, color }) => async (dispatch, getState) => {
+  dispatch(guessColor({ succeeded, color }));
+  dispatch(startAudio());
+  dispatch(turnLightOn(color));
+  await waitTime(REDUCED_DELAY_TIME);
+  dispatch(turnLightOff());
+  await waitTime(REDUCED_DELAY_TIME);
+  dispatch(finishAudio());
 
-//   const { match } = getState();
-//   const { all, guessed } = match;
-//   const done = all.length === guessed.length && succeeded;
+  const { match } = getState();
+  const { sequence, guessed } = match;
+  const done = sequence.length === guessed.length && succeeded;
 
-//   return new Promise(r => r({ done }));
-// };
+  return new Promise(resolve => resolve({ done }));
+};
 
 export const actionCreators = {
   toggleGamePower,
@@ -166,8 +178,8 @@ export const actionCreators = {
   // lightenOffPad,
   nextLevel,
   nextLevelThunk,
-  // guessColor,
-  // guess,
+  guessColor,
+  guessThunk,
   // sing,
   playSequenceThunk,
 };

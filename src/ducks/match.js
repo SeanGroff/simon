@@ -34,12 +34,11 @@ export default function reducer(state = initialState, action) {
       };
 
     case GUESS_COLOR:
+      const { succeeded, color } = payload;
       const prevGuessed = state.guessed;
       return {
         ...state,
-        guessed: payload.succeeded
-          ? [...prevGuessed, payload.color]
-          : prevGuessed,
+        guessed: succeeded ? [...prevGuessed, color] : prevGuessed,
       };
 
     default:

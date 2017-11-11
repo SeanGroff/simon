@@ -2,15 +2,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Light from './Light';
+import waitTime from '../utils/waitTime';
+import { NEXT_LEVEL_DELAY_TIME } from '../constants';
 
 type Props = {
   toggleGamePower(payload: boolean): { type: string, payload: boolean },
   startGameThunk(): { type: string },
-  nextThunk(): any,
+  nextLevelThunk(): any,
+  guessThunk({ succeeded: boolean, color: string }): any,
+  playSequenceThunk(): any,
   power: boolean,
   counter: number,
-  audioPlaying: boolean, // audioPlaying
+  audioPlaying: boolean,
   lights: string[],
+  match: { sequence: string[], guessed: string[] },
+  gameOver: boolean,
 };
 
 type State = {
@@ -29,7 +35,6 @@ export default class Lights extends Component<Props, State> {
   };
 
   componentWillReceiveProps({ counter, lights }) {
-    console.log(lights);
     if (counter) {
       this.setState(() => ({
         activeLight: lights.reduce((accum, light) => {
@@ -43,8 +48,26 @@ export default class Lights extends Component<Props, State> {
   }
 
   clickHandler = (color: string) => {
-    console.log('click');
-    // makeGuessThunk(color);
+    const {
+      match,
+      gameOver,
+      guessThunk,
+      nextLevelThunk,
+      playSequenceThunk,
+    } = this.props;
+    const { sequence, guessed } = match;
+    const tail = guessed.length;
+    const succeeded = sequence[tail] === color;
+
+    if (!gameOver) {
+      guessThunk({ succeeded, color }).then(async ({ done }) => {
+        if (done) {
+          nextLevelThunk();
+          await waitTime(NEXT_LEVEL_DELAY_TIME);
+          playSequenceThunk();
+        }
+      });
+    }
   };
 
   render() {
