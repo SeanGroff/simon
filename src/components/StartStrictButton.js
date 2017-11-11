@@ -3,11 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  startButton: boolean,
-  disabled: number | boolean,
-  startGame(): { type: string },
+  startGameThunk(): any,
   playSequenceThunk(): any,
   toggleStrictMode(): { type: string },
+  startButton: boolean,
+  disabled: number | boolean,
 };
 
 const StyledButton = styled.button`
@@ -15,7 +15,8 @@ const StyledButton = styled.button`
   width: 20px;
   height: 20px;
   border: 4px solid #222222;
-  background: ${(props: Props) => (props.startButton ? '#FC0102' : 'yellow')};
+  background: ${({ startButton }: Props) =>
+    startButton ? '#FC0102' : 'yellow'};
   margin: auto;
   padding: 10px;
   position: relative;
@@ -32,14 +33,27 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function startStrictButton(props: Props) {
-  const clickHandler = () => {
-    if (props.startButton) {
-      props.startGame();
-      props.playSequenceThunk();
+export default function StartStrictButton({
+  startGameThunk,
+  playSequenceThunk,
+  toggleStrictMode,
+  startButton,
+  disabled,
+}: Props) {
+  const handleClick = () => {
+    if (startButton) {
+      startGameThunk();
+      playSequenceThunk();
     } else {
-      props.toggleStrictMode();
+      toggleStrictMode();
     }
   };
-  return <StyledButton onClick={clickHandler} {...props} />;
+
+  return (
+    <StyledButton
+      disabled={disabled}
+      startButton={startButton}
+      onClick={handleClick}
+    />
+  );
 }

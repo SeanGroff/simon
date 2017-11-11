@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import LightsWrapper from '../components/LightsWrapper';
+import Lights from '../components/Lights';
 import {
   startGameThunk,
   playSequenceThunk,
@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   audioPlaying: state.game.audioPlaying,
   gameOver: state.game.gameOver,
   match: state.match,
+  power: state.game.power,
 });
 
 const mapDispatchToProps = (dispatch: *) =>
@@ -28,4 +29,4 @@ const mapDispatchToProps = (dispatch: *) =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(LightsWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(Lights);

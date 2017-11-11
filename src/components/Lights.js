@@ -4,23 +4,22 @@ import styled from 'styled-components';
 import Light from './Light';
 import waitTime from '../utils/waitTime';
 import { NEXT_LEVEL_DELAY_TIME } from '../constants';
+import type { LightType } from '../types';
 
 type Props = {
-  toggleGamePower(payload: boolean): { type: string, payload: boolean },
   startGameThunk(): { type: string },
-  nextLevelThunk(): any,
-  guessThunk({ succeeded: boolean, color: string }): any,
   playSequenceThunk(): any,
-  power: boolean,
+  guessThunk({ succeeded: boolean, color: string }): any,
+  nextLevelThunk(): any,
+  lights: LightType[],
   counter: number,
   audioPlaying: boolean,
-  lights: string[],
-  match: { sequence: string[], guessed: string[] },
   gameOver: boolean,
+  match: { sequence: string[], guessed: string[] },
+  power: boolean,
 };
 
 type State = {
-  clickable: boolean,
   activeLight: string,
 };
 
@@ -30,7 +29,6 @@ const LightsRow = styled.div`margin-bottom: -4px;`;
 
 export default class Lights extends Component<Props, State> {
   state = {
-    clickable: false,
     activeLight: '',
   };
 
@@ -39,7 +37,7 @@ export default class Lights extends Component<Props, State> {
     this.context = new AudioContext();
   }
 
-  componentWillReceiveProps({ counter, lights }) {
+  componentWillReceiveProps({ counter, lights }: Props) {
     if (counter) {
       this.setState(() => ({
         activeLight: lights.reduce((accum, light) => {
@@ -84,7 +82,10 @@ export default class Lights extends Component<Props, State> {
 
   render() {
     const activeLight = this.state.activeLight;
-    const audioPlaying = this.props.audioPlaying;
+    const { audioPlaying, counter, power, gameOver } = this.props;
+    const clickable =
+      !audioPlaying && power && !gameOver && !!counter ? true : false;
+
     return (
       <LightsWrapper>
         <LightsRow>
@@ -92,7 +93,7 @@ export default class Lights extends Component<Props, State> {
             id={0}
             animate={activeLight === 'green'}
             topLeft
-            clickable={!audioPlaying} // audioPlaying
+            clickable={clickable}
             color="#00A74A"
             lightUpColor="#13ff7c"
             onClick={() => this.clickHandler('green')}
@@ -101,7 +102,7 @@ export default class Lights extends Component<Props, State> {
             id={1}
             animate={activeLight === 'red'}
             topRight
-            clickable={!audioPlaying}
+            clickable={clickable}
             color="#9F0F17"
             lightUpColor="#ff4c4c"
             onClick={() => this.clickHandler('red')}
@@ -112,7 +113,7 @@ export default class Lights extends Component<Props, State> {
             id={2}
             animate={activeLight === 'yellow'}
             bottomLeft
-            clickable={!audioPlaying}
+            clickable={clickable}
             color="#CCA707"
             lightUpColor="#fed93f"
             onClick={() => this.clickHandler('yellow')}
@@ -121,7 +122,7 @@ export default class Lights extends Component<Props, State> {
             id={3}
             animate={activeLight === 'blue'}
             bottomRight
-            clickable={!audioPlaying}
+            clickable={clickable}
             color="#094A8F"
             lightUpColor="#1c8cff"
             onClick={() => this.clickHandler('blue')}

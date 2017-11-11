@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  powerOnOff(power: boolean): { type: string, payload: boolean },
+  toggleGamePower(power: boolean): { type: string, payload: boolean },
   power: boolean,
 };
 
@@ -24,17 +24,15 @@ const Toggler = styled.div`
   border-radius: 4px;
   border: 2px solid #222222;
   position: relative;
-  left: ${(props: Props) => (props.power ? '20px' : '0')};
+  left: ${({ power }: Props) => (power ? '20px' : '0')};
   transition: left 0.1s ease-out;
 `;
 
-const OnOffSwitch = (props: Props) => {
-  const clickHandler = () => props.powerOnOff(!props.power);
+export default function OnOffSwitch({ toggleGamePower, power }: Props) {
+  const handleClick = () => toggleGamePower(!power);
   return (
-    <StyledSwitch onClick={clickHandler} {...props}>
-      <Toggler {...props} />
+    <StyledSwitch onClick={handleClick}>
+      <Toggler power={power} />
     </StyledSwitch>
   );
-};
-
-export default OnOffSwitch;
+}

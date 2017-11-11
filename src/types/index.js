@@ -22,6 +22,11 @@
 //   +playerTurn: boolean,
 // };
 
+export type LightType = {
+  color: string,
+  active: boolean,
+};
+
 // export type StartGameAction = {
 //   type: typeof START_GAME,
 // };

@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  on: boolean,
-  count: number | null,
+  power: boolean,
+  counter: ?number,
 };
 
 const StyledCounter = styled.div`
@@ -16,15 +16,9 @@ const StyledCounter = styled.div`
   font-size: 32px;
   border-radius: 10px;
   width: 50px;
-  color: ${(props: Props) => (props.on ? '#DC0D29' : '#430710')};
+  color: ${({ power }: Props) => (power ? '#DC0D29' : '#430710')};
 `;
 
-const Counter = (props: Props) => (
-  <StyledCounter {...props}>{props.count || '--'}</StyledCounter>
-);
-
-Counter.defaultProps = {
-  count: 0,
-};
-
-export default Counter;
+export default function Counter({ counter, power }: Props) {
+  return <StyledCounter power={power}>{counter || '--'}</StyledCounter>;
+}

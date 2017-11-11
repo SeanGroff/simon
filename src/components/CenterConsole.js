@@ -1,19 +1,21 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import Counter from './Counter';
-import StartStrictContainer from '../containers/StartStrictContainer';
-import OnOffSwitch from './OnOffSwitch';
+import Counter from '../containers/CounterContainer';
+import StartStrict from '../containers/StartStrictContainer';
+import OnOffSwitch from '../containers/OnOffSwitchContainer';
 
 type Props = {
-  hasMargin?: boolean,
-  hasPadding?: boolean,
   toggleGamePower(power: boolean): { type: string, payload: boolean },
   startGameThunk(): { type: string }, // fix
-  playSequenceThunk(): any,
   power: boolean,
   counter: number,
   strictMode: boolean,
+};
+
+type BoxModelProps = {
+  hasMargin?: boolean,
+  hasPadding?: boolean,
 };
 
 const Wrapper = styled.div`
@@ -74,8 +76,10 @@ const ButtonWrapper = styled.span`
 const Label = styled.label`
   font-size: 14px;
   color: #222222;
-  margin: ${(props: Props) => (props.hasMargin ? 'auto 5px 0 5px' : '0')};
-  padding: ${(props: Props) => (props.hasPadding ? '0 0 5px 0' : '0')};
+  margin: ${({ hasMargin }: BoxModelProps): string =>
+    hasMargin ? 'auto 5px 0 5px' : '0'};
+  padding: ${({ hasPadding }: BoxModelProps): string =>
+    hasPadding ? '0 0 5px 0' : '0'};
   text-transform: capitalize;
   text-align: center;
 `;
@@ -91,36 +95,40 @@ const StrictLight = styled.span`
   transition: background 0.2s linear;
 `;
 
-export default (props: Props) => (
-  <Wrapper>
-    <TopHalf>
-      <Header>{'simon'}</Header>
-    </TopHalf>
-    <BottomHalf>
-      <ButtonsRow>
-        <ButtonWrapper>
-          <Label hasPadding>{'count'}</Label>
-          <Counter count={props.counter} on={props.power} />
-        </ButtonWrapper>
-        <ButtonWrapper>
-          <Label hasPadding>{'start'}</Label>
-          <StartStrictContainer
-            startButton
-            disabled={!props.power || props.counter}
-            startGame={props.startGameThunk}
-          />
-        </ButtonWrapper>
-        <ButtonWrapper>
-          <Label hasPadding>{'strict'}</Label>
-          <StartStrictContainer startButton={false} disabled={!props.power} />
-        </ButtonWrapper>
-        <StrictLight strict={props.strictMode} />
-      </ButtonsRow>
-      <ButtonsRow>
-        <Label hasMargin>{'off'}</Label>
-        <OnOffSwitch power={props.power} powerOnOff={props.toggleGamePower} />
-        <Label hasMargin>{'on'}</Label>
-      </ButtonsRow>
-    </BottomHalf>
-  </Wrapper>
-);
+export default function CenterConsole({
+  power,
+  counter,
+  strictMode,
+  startGameThunk,
+  toggleGamePower,
+}: Props) {
+  return (
+    <Wrapper>
+      <TopHalf>
+        <Header>{'simon'}</Header>
+      </TopHalf>
+      <BottomHalf>
+        <ButtonsRow>
+          <ButtonWrapper>
+            <Label hasPadding>{'count'}</Label>
+            <Counter />
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <Label hasPadding>{'start'}</Label>
+            <StartStrict startButton disabled={!power || counter} />
+          </ButtonWrapper>
+          <ButtonWrapper>
+            <Label hasPadding>{'strict'}</Label>
+            <StartStrict startButton={false} disabled={!power} />
+          </ButtonWrapper>
+          <StrictLight strict={strictMode} />
+        </ButtonsRow>
+        <ButtonsRow>
+          <Label hasMargin>{'off'}</Label>
+          <OnOffSwitch />
+          <Label hasMargin>{'on'}</Label>
+        </ButtonsRow>
+      </BottomHalf>
+    </Wrapper>
+  );
+}
