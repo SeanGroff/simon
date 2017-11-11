@@ -4,13 +4,14 @@ import { bindActionCreators } from 'redux';
 import StartStrictButton from '../components/StartStrictButton';
 import { actionCreators } from '../ducks/game';
 
-const { startGameThunk, playSequenceThunk } = actionCreators;
+const { startGameThunk, playSequenceThunk, toggleStrictMode } = actionCreators;
 
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
       startGameThunk,
       playSequenceThunk,
+      toggleStrictMode,
     },
     dispatch,
   );

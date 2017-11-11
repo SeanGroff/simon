@@ -3,6 +3,7 @@ import getRandomColor from '../utils/getRandomColor';
 import { AUDIO_DELAY_TIME, REDUCED_DELAY_TIME } from '../constants';
 
 const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
+const TOGGLE_STRICT_MODE = 'TOGGLE_STRICT_MODE';
 const START_GAME = 'START_GAME';
 const GAME_OVER = 'GAME_OVER';
 const START_AUDIO = 'START_AUDIO';
@@ -100,6 +101,18 @@ function turnLightOff() {
     type: TURN_LIGHT_OFF,
   };
 }
+
+/**
+ * Toggle Strict Mode
+ *
+ * @returns { type: TOGGLE_STRICT_MODE }
+ */
+function toggleStrictMode() {
+  return {
+    type: TOGGLE_STRICT_MODE,
+  };
+}
+
 // const startAudio = createAction(START_AUDIO);
 // const finishAudio = createAction(FINISH_AUDIO);
 
@@ -170,17 +183,17 @@ const guessThunk = ({ succeeded, color }) => async (dispatch, getState) => {
 
 export const actionCreators = {
   toggleGamePower,
+  toggleStrictMode,
   startAudio,
   startGame,
   startGameThunk,
   finishAudio,
-  // lightenPad,
-  // lightenOffPad,
+  turnLightOn,
+  turnLightOff,
   nextLevel,
   nextLevelThunk,
   guessColor,
   guessThunk,
-  // sing,
   playSequenceThunk,
 };
 
@@ -205,6 +218,7 @@ const initialState = {
   counter: null,
   gameOver: false,
   power: false,
+  strictMode: false,
 };
 
 /**
@@ -226,6 +240,12 @@ export default function reducer(state = initialState, action) {
         };
       }
       return { ...initialState };
+
+    case TOGGLE_STRICT_MODE:
+      return {
+        ...state,
+        strictMode: !state.strictMode,
+      };
 
     case START_GAME:
       return {
@@ -255,7 +275,7 @@ export default function reducer(state = initialState, action) {
     case GUESS_COLOR:
       return {
         ...state,
-        gameOver: !payload.succeeded,
+        gameOver: state.strictMode ? !payload.succeeded : false,
       };
 
     default:

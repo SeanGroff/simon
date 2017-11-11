@@ -13,6 +13,7 @@ type Props = {
   playSequenceThunk(): any,
   power: boolean,
   counter: number,
+  strictMode: boolean,
 };
 
 const Wrapper = styled.div`
@@ -79,6 +80,16 @@ const Label = styled.label`
   text-align: center;
 `;
 
+const StrictLight = styled.span`
+  align-self: center;
+  background: ${({ strict }) => (strict ? 'springgreen' : '#222222')};
+  border: 2px solid #222222;
+  border-radius: 100%;
+  height: 8px;
+  margin-top: 10px;
+  width: 8px;
+`;
+
 export default (props: Props) => (
   <Wrapper>
     <TopHalf>
@@ -102,6 +113,7 @@ export default (props: Props) => (
           <Label hasPadding>{'strict'}</Label>
           <StartStrictContainer startButton={false} disabled={!props.power} />
         </ButtonWrapper>
+        <StrictLight strict={props.strictMode} />
       </ButtonsRow>
       <ButtonsRow>
         <Label hasMargin>{'off'}</Label>

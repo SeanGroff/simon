@@ -7,6 +7,7 @@ type Props = {
   disabled: number | boolean,
   startGame(): { type: string },
   playSequenceThunk(): any,
+  toggleStrictMode(): { type: string },
 };
 
 const StyledButton = styled.button`
@@ -37,9 +38,7 @@ export default function startStrictButton(props: Props) {
       props.startGame();
       props.playSequenceThunk();
     } else {
-      /**
-       * @todo strictGame()
-       */
+      props.toggleStrictMode();
     }
   };
   return <StyledButton onClick={clickHandler} {...props} />;

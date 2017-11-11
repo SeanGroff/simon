@@ -44,8 +44,7 @@ const SimonContainer = styled.div`
 const mapStateToProps = state => ({
   power: state.game.power,
   counter: state.game.counter,
-  // lightSequence: state.lightSequence,
-  // playerTurn: state.playerTurn,
+  strictMode: state.game.strictMode,
 });
 
 const mapDispatchToProps = (dispatch: *) =>
