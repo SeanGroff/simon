@@ -39,7 +39,7 @@ const StyledLight = styled.div`
     props.bottomRight ? '100%' : '0'};
   pointer-events: ${(props: Props) => (props.clickable ? 'auto' : 'none')};
   animation: ${(props: Props) =>
-    props.animate ? `${LightUp(props)} 1500ms linear` : 'none'};
+    props.animate ? `${LightUp(props)} 500ms linear` : 'none'};
   :hover {
     cursor: ${(props: Props) => (props.clickable ? 'pointer' : 'initial')};
   }

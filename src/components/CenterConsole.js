@@ -88,6 +88,7 @@ const StrictLight = styled.span`
   height: 8px;
   margin-top: 10px;
   width: 8px;
+  transition: background 0.2s linear;
 `;
 
 export default (props: Props) => (
