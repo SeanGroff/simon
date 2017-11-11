@@ -1,32 +1,7 @@
-const TURN_LIGHT_ON = 'TURN_LIGHT_ON';
-const TURN_LIGHT_OFF = 'TURN_LIGHT_OFF';
-const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
+import { actionTypes } from './game';
 
-/**
- * Light On Action Creator
- *
- * @param {string} color
- * @returns { type: {string}, payload: {string} }
- */
-function lightOn(color: string) {
-  return {
-    type: TURN_LIGHT_ON,
-    payload: color,
-  };
-}
+const { TURN_LIGHT_ON, TURN_LIGHT_OFF, TOGGLE_GAME_POWER } = actionTypes;
 
-/**
- * Light Off Action Creator
- *
- * @returns { type: {string} }
- */
-function lightOff() {
-  return {
-    type: TURN_LIGHT_OFF,
-  };
-}
-
-// Initial State
 const initialState = [
   {
     color: 'green',
@@ -45,16 +20,6 @@ const initialState = [
     active: 'false',
   },
 ];
-
-export const actionTypes = {
-  TURN_LIGHT_ON,
-  TURN_LIGHT_OFF,
-};
-
-export const actionCreators = {
-  lightOn,
-  lightOff,
-};
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action;
@@ -81,3 +46,21 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
+
+function lightOn(color: string) {
+  return {
+    type: TURN_LIGHT_ON,
+    payload: color,
+  };
+}
+
+function lightOff() {
+  return {
+    type: TURN_LIGHT_OFF,
+  };
+}
+
+export const actionCreators = {
+  lightOn,
+  lightOff,
+};

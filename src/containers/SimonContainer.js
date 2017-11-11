@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import LightsWrapperContainer from '../containers/LightsWrapperContainer';
 import CenterConsole from '../components/CenterConsole';
-import { actionCreators } from '../ducks/game';
+import { actionCreators } from '../redux/modules/game';
 
 const {
   toggleGamePower,
@@ -14,10 +14,6 @@ const {
   nextLevelThunk,
   playSequenceThunk,
 } = actionCreators;
-
-// import toggleGamePowerAction from '../actions/toggleGamePowerAction';
-// import { startGameAction } from '../actions/startGameAction';
-// import { startNextRoundAction } from '../actions/startNextRoundAction';
 
 // type Props = {
 //   toggleGamePower(payload: boolean): { type: string, payload: boolean },
@@ -28,6 +24,15 @@ const {
 //   lightSequence: ?(number[]),
 //   playerTurn: boolean,
 // };
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: DodgerBlue;
+`;
 
 const SimonContainer = styled.div`
   display: flex;
@@ -59,10 +64,12 @@ const mapDispatchToProps = (dispatch: *) =>
   );
 
 export const Simon = (props: any) => (
-  <SimonContainer>
-    <LightsWrapperContainer {...props} />
-    <CenterConsole {...props} />
-  </SimonContainer>
+  <Wrapper>
+    <SimonContainer>
+      <LightsWrapperContainer {...props} />
+      <CenterConsole {...props} />
+    </SimonContainer>
+  </Wrapper>
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simon);

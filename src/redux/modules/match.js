@@ -1,11 +1,7 @@
-const TOGGLE_GAME_POWER = 'TOGGLE_GAME_POWER';
-const START_GAME = 'START_GAME';
-const NEXT_LEVEL = 'NEXT_LEVEL';
-const GUESS_COLOR = 'GUESS_COLOR';
+import { actionTypes } from './game';
 
-/**
- * Initial State
- */
+const { TOGGLE_GAME_POWER, START_GAME, NEXT_LEVEL, GUESS_COLOR } = actionTypes;
+
 const initialState = {
   guessed: [],
   sequence: [],

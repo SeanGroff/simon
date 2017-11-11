@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import StartStrictButton from '../components/StartStrictButton';
-import { actionCreators } from '../ducks/game';
+import { actionCreators } from '../redux/modules/game';
 
 const { startGameThunk, playSequenceThunk, toggleStrictMode } = actionCreators;
 

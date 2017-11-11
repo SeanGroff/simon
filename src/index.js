@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './index.css';
-import App from './App';
-import store from './store';
+
+import store from './redux/createStore';
+import SimonContainer from './containers/SimonContainer';
 import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <SimonContainer />
   </Provider>,
   document.getElementById('root'),
 );
+
 registerServiceWorker();

@@ -3,13 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Light from './Light';
 import waitTime from '../utils/waitTime';
-import {
-  NEXT_LEVEL_DELAY_TIME,
-  AUDIO_GREEN,
-  AUDIO_RED,
-  AUDIO_YELLOW,
-  AUDIO_BLUE,
-} from '../constants';
+import { NEXT_LEVEL_DELAY_TIME } from '../constants';
 
 type Props = {
   toggleGamePower(payload: boolean): { type: string, payload: boolean },
