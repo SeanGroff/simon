@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import StartStrictButton from '../components/StartStrictButton';
-import { actionCreators } from '../redux/modules/game';
-
-const { startGameThunk, playSequenceThunk, toggleStrictMode } = actionCreators;
+import {
+  startGameThunk,
+  playSequenceThunk,
+  toggleStrictMode,
+} from '../redux/modules/game';
 
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(

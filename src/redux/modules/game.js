@@ -79,59 +79,59 @@ export default function reducer(state = initialState, action) {
                               Action Creators
 ============================================================================= */
 
-function toggleGamePower(power) {
+export function toggleGamePower(power) {
   return {
     type: TOGGLE_GAME_POWER,
     payload: power,
   };
 }
 
-function startGame(color: string) {
+export function startGame(color: string) {
   return {
     type: START_GAME,
     payload: color,
   };
 }
 
-function nextLevel(color: string) {
+export function nextLevel(color: string) {
   return {
     type: NEXT_LEVEL,
     payload: color,
   };
 }
 
-function turnLightOn(color: string) {
+export function turnLightOn(color: string) {
   return {
     type: TURN_LIGHT_ON,
     payload: color,
   };
 }
 
-function turnLightOff() {
+export function turnLightOff() {
   return {
     type: TURN_LIGHT_OFF,
   };
 }
 
-function toggleStrictMode() {
+export function toggleStrictMode() {
   return {
     type: TOGGLE_STRICT_MODE,
   };
 }
 
-function startAudio() {
+export function startAudio() {
   return {
     type: START_AUDIO,
   };
 }
 
-function finishAudio() {
+export function finishAudio() {
   return {
     type: FINISH_AUDIO,
   };
 }
 
-function guessColor({ succeeded, color }) {
+export function guessColor({ succeeded, color }) {
   return {
     type: GUESS_COLOR,
     payload: { succeeded, color },
@@ -142,14 +142,14 @@ function guessColor({ succeeded, color }) {
                                     Thunks
 ============================================================================= */
 
-function startGameThunk() {
+export function startGameThunk() {
   return (dispatch, getState) => {
     const color = getRandomColor();
     dispatch(startGame(color));
   };
 }
 
-const playSequenceThunk = () => async (dispatch, getState) => {
+export const playSequenceThunk = () => async (dispatch, getState) => {
   dispatch(startAudio());
   const { match } = getState();
   for (let i = 0; i < match.sequence.length; i += 1) {
@@ -162,7 +162,10 @@ const playSequenceThunk = () => async (dispatch, getState) => {
   dispatch(finishAudio());
 };
 
-const guessThunk = ({ succeeded, color }) => async (dispatch, getState) => {
+export const guessThunk = ({ succeeded, color }) => async (
+  dispatch,
+  getState,
+) => {
   dispatch(guessColor({ succeeded, color }));
   dispatch(startAudio());
   dispatch(turnLightOn(color));
@@ -178,7 +181,7 @@ const guessThunk = ({ succeeded, color }) => async (dispatch, getState) => {
   return new Promise(resolve => resolve({ done }));
 };
 
-function nextLevelThunk() {
+export function nextLevelThunk() {
   return (dispatch, getState) => {
     const color = getRandomColor();
     dispatch(nextLevel(color));
@@ -193,20 +196,4 @@ export const actionTypes = {
   GAME_OVER,
   TURN_LIGHT_ON,
   TURN_LIGHT_OFF,
-};
-
-export const actionCreators = {
-  toggleGamePower,
-  toggleStrictMode,
-  startAudio,
-  startGame,
-  finishAudio,
-  turnLightOn,
-  turnLightOff,
-  nextLevel,
-  guessColor,
-  startGameThunk,
-  playSequenceThunk,
-  guessThunk,
-  nextLevelThunk,
 };

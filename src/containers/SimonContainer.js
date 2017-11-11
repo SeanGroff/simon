@@ -6,14 +6,12 @@ import { bindActionCreators } from 'redux';
 
 import LightsWrapperContainer from '../containers/LightsWrapperContainer';
 import CenterConsole from '../components/CenterConsole';
-import { actionCreators } from '../redux/modules/game';
-
-const {
+import {
   toggleGamePower,
   startGameThunk,
   nextLevelThunk,
   playSequenceThunk,
-} = actionCreators;
+} from '../redux/modules/game';
 
 // type Props = {
 //   toggleGamePower(payload: boolean): { type: string, payload: boolean },

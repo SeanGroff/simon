@@ -47,20 +47,15 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-function lightOn(color: string) {
+export function lightOn(color: string) {
   return {
     type: TURN_LIGHT_ON,
     payload: color,
   };
 }
 
-function lightOff() {
+export function lightOff() {
   return {
     type: TURN_LIGHT_OFF,
   };
 }
-
-export const actionCreators = {
-  lightOn,
-  lightOff,
-};
