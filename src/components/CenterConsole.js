@@ -6,8 +6,6 @@ import StartStrict from '../containers/StartStrictContainer';
 import OnOffSwitch from '../containers/OnOffSwitchContainer';
 
 type Props = {
-  toggleGamePower(power: boolean): { type: string, payload: boolean },
-  startGameThunk(): { type: string }, // fix
   power: boolean,
   counter: number,
   strictMode: boolean,
@@ -95,13 +93,7 @@ const StrictLight = styled.span`
   transition: background 0.2s linear;
 `;
 
-export default function CenterConsole({
-  power,
-  counter,
-  strictMode,
-  startGameThunk,
-  toggleGamePower,
-}: Props) {
+export default function CenterConsole({ power, counter, strictMode }: Props) {
   return (
     <Wrapper>
       <TopHalf>

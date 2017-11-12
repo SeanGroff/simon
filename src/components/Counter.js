@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 type Props = {
   power: boolean,
-  counter: ?number,
+  counter: ?number | ?string,
+  gameOver: boolean,
 };
 
 const StyledCounter = styled.div`
@@ -19,6 +20,10 @@ const StyledCounter = styled.div`
   color: ${({ power }: Props) => (power ? '#DC0D29' : '#430710')};
 `;
 
-export default function Counter({ counter, power }: Props) {
-  return <StyledCounter power={power}>{counter || '--'}</StyledCounter>;
+export default function Counter({ counter, power, gameOver }: Props) {
+  return (
+    <StyledCounter power={power}>
+      {gameOver ? 'X' : counter || '--'}
+    </StyledCounter>
+  );
 }

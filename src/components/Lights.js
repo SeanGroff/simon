@@ -7,7 +7,6 @@ import { NEXT_LEVEL_DELAY_TIME } from '../constants';
 import type { LightType } from '../types';
 
 type Props = {
-  startGameThunk(): { type: string },
   playSequenceThunk(): any,
   guessThunk({ succeeded: boolean, color: string }): any,
   nextLevelThunk(): any,

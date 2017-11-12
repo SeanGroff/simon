@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 
 import Lights from '../components/Lights';
 import {
-  startGameThunk,
   playSequenceThunk,
   guessThunk,
   nextLevelThunk,
@@ -21,7 +20,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch: *) =>
   bindActionCreators(
     {
-      startGameThunk,
       playSequenceThunk,
       guessThunk,
       nextLevelThunk,

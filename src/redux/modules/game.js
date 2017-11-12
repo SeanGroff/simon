@@ -1,6 +1,10 @@
 import waitTime from '../../utils/waitTime';
 import getRandomColor from '../../utils/getRandomColor';
-import { AUDIO_DELAY_TIME, REDUCED_DELAY_TIME } from '../../constants';
+import {
+  AUDIO_DELAY_TIME,
+  REDUCED_DELAY_TIME,
+  RESTART_GAME_DELAY_TIME,
+} from '../../constants';
 
 const TOGGLE_GAME_POWER = 'simon/game/TOGGLE_GAME_POWER';
 const TOGGLE_STRICT_MODE = 'simon/game/TOGGLE_STRICT_MODE';
@@ -12,6 +16,7 @@ const GUESS_COLOR = 'simon/game/GUESS_COLOR';
 const NEXT_LEVEL = 'simon/game/NEXT_LEVEL';
 const TURN_LIGHT_ON = 'simon/game/TURN_LIGHT_ON';
 const TURN_LIGHT_OFF = 'simon/game/TURN_LIGHT_OFF';
+const RESTART = 'simon/game/RESTART';
 
 const initialState = {
   audioPlaying: false,
@@ -32,6 +37,12 @@ export default function reducer(state = initialState, action) {
         };
       }
       return { ...initialState };
+
+    case RESTART:
+      return {
+        ...initialState,
+        power: true,
+      };
 
     case TOGGLE_STRICT_MODE:
       return {
@@ -93,6 +104,13 @@ export function startGame(color: string) {
   };
 }
 
+export function restartGame() {
+  console.log('restartGame()');
+  return {
+    type: RESTART,
+  };
+}
+
 export function nextLevel(color: string) {
   return {
     type: NEXT_LEVEL,
@@ -143,6 +161,7 @@ export function guessColor({ succeeded, color }) {
 ============================================================================= */
 
 export function startGameThunk() {
+  console.log('startGameThunk');
   return (dispatch, getState) => {
     const color = getRandomColor();
     dispatch(startGame(color));
@@ -188,6 +207,15 @@ export function nextLevelThunk() {
   };
 }
 
+export function restartGameThunk() {
+  return async (dispatch, getState) => {
+    await waitTime(RESTART_GAME_DELAY_TIME);
+    dispatch(restartGame());
+    dispatch(startGameThunk());
+    dispatch(playSequenceThunk());
+  };
+}
+
 export const actionTypes = {
   TOGGLE_GAME_POWER,
   START_GAME,
@@ -196,4 +224,5 @@ export const actionTypes = {
   GAME_OVER,
   TURN_LIGHT_ON,
   TURN_LIGHT_OFF,
+  RESTART,
 };
