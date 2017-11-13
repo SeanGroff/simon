@@ -6,11 +6,13 @@ type Props = {
   animate: boolean,
   color: string,
   lightUpColor: string,
+  lightColor: string,
   clickable: boolean,
   topLeft?: boolean,
   topRight?: boolean,
   bottomLeft?: boolean,
   bottomRight?: boolean,
+  handleClick(color: string): any,
 };
 
 type Animation = {
@@ -51,7 +53,9 @@ const StyledLight = styled.div`
   }
 `;
 
-const Light = (props: Props) => <StyledLight {...props} />;
+const Light = ({ handleClick, lightColor, ...props }: Props) => {
+  return <StyledLight onClick={() => handleClick(lightColor)} {...props} />;
+};
 
 Light.defaultProps = {
   animate: false,

@@ -1,6 +1,8 @@
-import { actionTypes } from './game';
+import waitTime from '../../utils/waitTime';
+import { TOGGLE_GAME_POWER, START_GAME, NEXT_LEVEL, GUESS_COLOR } from './game';
+import { TRY_AGAIN_DELAY_TIME } from '../../constants/index';
 
-const { TOGGLE_GAME_POWER, START_GAME, NEXT_LEVEL, GUESS_COLOR } = actionTypes;
+export const TRY_AGAIN = 'simon/match/TRY_AGAIN';
 
 const initialState = {
   guessed: [],
@@ -22,6 +24,12 @@ export default function reducer(state = initialState, action) {
         sequence: [payload],
       };
 
+    case TRY_AGAIN:
+      return {
+        ...state,
+        guessed: [],
+      };
+
     case NEXT_LEVEL:
       const prevSequence = state.sequence;
       return {
@@ -40,4 +48,20 @@ export default function reducer(state = initialState, action) {
     default:
       return state;
   }
+}
+
+export function tryAgain(counter) {
+  return {
+    type: TRY_AGAIN,
+    payload: counter,
+  };
+}
+
+export function tryAgainThunk() {
+  return async (dispatch, getState) => {
+    const counterValue = getState().game.counter;
+    dispatch(tryAgain('X'));
+    await waitTime(TRY_AGAIN_DELAY_TIME);
+    dispatch(tryAgain(counterValue));
+  };
 }

@@ -1,6 +1,4 @@
-import { actionTypes } from './game';
-
-const { TURN_LIGHT_ON, TURN_LIGHT_OFF, TOGGLE_GAME_POWER } = actionTypes;
+import { TURN_LIGHT_ON, TURN_LIGHT_OFF, TOGGLE_GAME_POWER } from './game';
 
 const initialState = [
   {
