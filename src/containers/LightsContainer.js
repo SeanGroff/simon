@@ -8,7 +8,6 @@ type Props = {
   tryAgain(): { type: string },
   playSequenceThunk(): any,
   guessThunk({ succeeded: boolean, color: string }): any,
-  nextLevelThunk(): any,
   lights: LightType[],
   counter: number,
   audioPlaying: boolean,

@@ -54,8 +54,10 @@ class LightContainer extends Component<Props> {
     const tail = guessed.length;
     const succeeded = sequence[tail] === color;
     if (!gameOver) {
-      guessThunk({ succeeded, color }).then(async ({ done }) => {
-        if (done) {
+      guessThunk({ succeeded, color }).then(async ({ done, victorious }) => {
+        if (done && victorious) {
+          nextLevelThunk();
+        } else if (done) {
           nextLevelThunk();
           await waitTime(NEXT_LEVEL_DELAY_TIME);
           playSequenceThunk();

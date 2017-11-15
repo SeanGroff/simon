@@ -198,11 +198,12 @@ export const guessThunk = ({ succeeded, color }) => async (
   await waitTime(REDUCED_DELAY_TIME);
   dispatch(finishAudio());
 
-  const { match } = getState();
+  const { match, game } = getState();
   const { sequence, guessed } = match;
   const done = sequence.length === guessed.length && succeeded;
+  const victorious = done && game.counter === 20;
 
-  return new Promise(resolve => resolve({ done }));
+  return new Promise(resolve => resolve({ done, victorious }));
 };
 
 export function nextLevelThunk() {
