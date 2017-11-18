@@ -4,12 +4,17 @@ import { TRY_AGAIN_DELAY_TIME } from '../../constants/index';
 
 export const TRY_AGAIN = 'simon/match/TRY_AGAIN';
 
+type MatchState = {
+  +guessed: ?(string[]),
+  +sequence: ?(string[]),
+};
+
 const initialState = {
   guessed: [],
   sequence: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state: MatchState = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_GAME_POWER:

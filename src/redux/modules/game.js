@@ -7,6 +7,14 @@ import {
 } from '../../constants';
 import { TRY_AGAIN } from './match';
 
+type GameState = {
+  +audioPlaying: boolean,
+  +counter: ?number,
+  +gameOver: boolean,
+  +power: boolean,
+  +strictMode: boolean,
+};
+
 export const TOGGLE_GAME_POWER = 'simon/game/TOGGLE_GAME_POWER';
 export const TOGGLE_STRICT_MODE = 'simon/game/TOGGLE_STRICT_MODE';
 export const START_GAME = 'simon/game/START_GAME';
@@ -27,7 +35,7 @@ const initialState = {
   strictMode: false,
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state: GameState = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_GAME_POWER:

@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Lights from '../components/Lights';
-import type { LightType } from '../types';
+
+type LightType = {
+  color: string,
+  active: boolean,
+};
 
 type Props = {
   tryAgain(): { type: string },

@@ -1,5 +1,12 @@
 import { TURN_LIGHT_ON, TURN_LIGHT_OFF, TOGGLE_GAME_POWER } from './game';
 
+type LightsState = [
+  {
+    +color: string,
+    +active: boolean,
+  },
+];
+
 const initialState = [
   {
     color: 'green',
@@ -19,7 +26,7 @@ const initialState = [
   },
 ];
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state: LightsState = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_GAME_POWER:
