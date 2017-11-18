@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import LightAudio from '../components/LightAudio';
 import Light from '../components/Light';
 import {
   playSequenceThunk,
@@ -43,12 +44,12 @@ class LightContainer extends Component<Props> {
   componentDidUpdate(prevProps) {
     /** Play sound only when Light turns ON */
     if (!prevProps.animate && this.props.animate) {
-      this.light.play();
+      this.light.firstChild.play();
     }
   }
 
   handleLightClick = (color: string) => {
-    this.light.play();
+    this.light.firstChild.play();
     const {
       match,
       gameOver,
@@ -83,7 +84,9 @@ class LightContainer extends Component<Props> {
         innerRef={el => (this.light = el)}
         handleClick={this.handleLightClick}
         {...this.props}
-      />
+      >
+        <LightAudio {...this.props} />
+      </Light>
     );
   }
 }
