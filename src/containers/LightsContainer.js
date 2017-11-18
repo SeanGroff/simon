@@ -50,6 +50,7 @@ class LightsContainer extends Component<Props, State> {
       !this.props.audioPlaying &&
       this.props.power &&
       !this.props.gameOver &&
+      this.props.counter !== 'X' &&
       !!this.props.counter
         ? true
         : false;

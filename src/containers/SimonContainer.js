@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import VictoryScreen from '../components/VictoryScreen';
+import GameOverScreen from '../components/GameOverScreen';
 import Simon from '../components/Simon';
 import { restartGameThunk } from '../redux/modules/game';
 
@@ -14,6 +14,7 @@ type Props = {
 
 type State = {
   victorious: boolean,
+  gameOver: boolean,
 };
 
 const mapStateToProps = state => ({
@@ -28,29 +29,45 @@ const mapDispatchToProps = (dispatch: *) => ({
 class SimonContainer extends Component<Props, State> {
   state = {
     victorious: false,
+    gameOver: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.gameOver !== this.props.gameOver && this.props.gameOver) {
-      this.props.restart();
+      this.setState(prevState => ({
+        ...prevState,
+        gameOver: true,
+      }));
     }
     if (prevProps.counter !== this.props.counter && this.props.counter === 21) {
       this.setState(() => ({
+        ...prevState,
         victorious: true,
       }));
     }
   }
 
   handleClick = () => {
-    this.setState(() => ({
+    this.setState(prevState => ({
+      ...prevState,
       victorious: false,
+      gameOver: false,
     }));
     this.props.restart();
   };
 
   render() {
-    const { victorious } = this.state;
-    return victorious ? <VictoryScreen close={this.handleClick} /> : <Simon />;
+    const { counter } = this.props;
+    const { victorious, gameOver } = this.state;
+    return victorious || gameOver ? (
+      <GameOverScreen
+        close={this.handleClick}
+        victorious={victorious}
+        score={counter}
+      />
+    ) : (
+      <Simon />
+    );
   }
 }
 
