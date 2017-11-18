@@ -10,6 +10,7 @@ import {
 } from '../redux/modules/game';
 import { tryAgainThunk } from '../redux/modules/match';
 import waitTime from '../utils/waitTime';
+import { initAudio, playSound, RED_AUDIO } from '../utils/sound';
 import { NEXT_LEVEL_DELAY_TIME } from '../constants';
 
 type Props = {
@@ -40,6 +41,11 @@ const mapDispatchToProps = (dispatch: *) =>
   );
 
 class LightContainer extends Component<Props> {
+  componentDidMount() {
+    const context = initAudio();
+    playSound({ context, RED_AUDIO });
+  }
+
   handleLightClick = (color: string) => {
     const {
       match,
