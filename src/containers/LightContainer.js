@@ -10,7 +10,6 @@ import {
 } from '../redux/modules/game';
 import { tryAgainThunk } from '../redux/modules/match';
 import waitTime from '../utils/waitTime';
-import { initAudio, playSound, RED_AUDIO } from '../utils/sound';
 import { NEXT_LEVEL_DELAY_TIME } from '../constants';
 
 type Props = {
@@ -41,12 +40,15 @@ const mapDispatchToProps = (dispatch: *) =>
   );
 
 class LightContainer extends Component<Props> {
-  componentDidMount() {
-    const context = initAudio();
-    playSound({ context, RED_AUDIO });
+  componentDidUpdate(prevProps) {
+    /** Play sound only when Light turns ON */
+    if (!prevProps.animate && this.props.animate) {
+      this.light.play();
+    }
   }
 
   handleLightClick = (color: string) => {
+    this.light.play();
     const {
       match,
       gameOver,
@@ -76,7 +78,13 @@ class LightContainer extends Component<Props> {
   };
 
   render() {
-    return <Light handleClick={this.handleLightClick} {...this.props} />;
+    return (
+      <Light
+        innerRef={el => (this.light = el)}
+        handleClick={this.handleLightClick}
+        {...this.props}
+      />
+    );
   }
 }
 

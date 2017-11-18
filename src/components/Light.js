@@ -12,6 +12,7 @@ type Props = {
   topRight?: boolean,
   bottomLeft?: boolean,
   bottomRight?: boolean,
+  src: string,
   handleClick(color: string): any,
 };
 
@@ -32,7 +33,7 @@ const LightUp = ({ color, lightUpColor }: Animation) => keyframes`
   }
 `;
 
-const StyledLight = styled.div`
+const StyledLight = styled.audio`
   display: inline-block;
   width: 200px;
   height: 200px;
@@ -53,8 +54,15 @@ const StyledLight = styled.div`
   }
 `;
 
-const Light = ({ handleClick, lightColor, ...props }: Props) => {
-  return <StyledLight onClick={() => handleClick(lightColor)} {...props} />;
+const Light = ({ handleClick, lightColor, src, ...props }: Props) => {
+  return (
+    <StyledLight
+      src={src}
+      preload="auto"
+      onClick={() => handleClick(lightColor)}
+      {...props}
+    />
+  );
 };
 
 Light.defaultProps = {
