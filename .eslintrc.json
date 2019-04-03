@@ -1,17 +1,3 @@
 {
-  "extends": ["koality", "plugin:flowtype/recommended"],
-  "plugins": ["flowtype", "react"],
-  "env": {
-    "browser": true
-  },
-  "globals": {
-    "it": true,
-    "expect": true,
-    "describe": true
-  },
-  "settings": {
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": true
-    }
-  }
+  "extends": "react-app"
 }

@@ -1,11 +1,7 @@
-// @flow
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-type Props = {
-  toggleGamePower(power: boolean): { type: string, payload: boolean },
-  power: boolean,
-};
+import { useGame } from '../hooks/useGame'
 
 const StyledSwitch = styled.div`
   width: 40px;
@@ -15,7 +11,7 @@ const StyledSwitch = styled.div`
   :hover {
     cursor: pointer;
   }
-`;
+`
 
 const Toggler = styled.div`
   background-color: #fc0102;
@@ -24,15 +20,21 @@ const Toggler = styled.div`
   border-radius: 4px;
   border: 2px solid #222222;
   position: relative;
-  left: ${({ power }: Props) => (power ? '20px' : '0')};
+  left: ${({ power }) => (power ? '20px' : '0')};
   transition: left 0.1s ease-out;
-`;
+`
 
-export default function OnOffSwitch({ toggleGamePower, power }: Props) {
-  const handleClick = () => toggleGamePower(!power);
+export default function OnOffSwitch() {
+  const [state, dispatch, actions] = useGame()
+  const handleClick = () => {
+    dispatch({
+      type: actions.TOGGLE_GAME_POWER,
+      power: !state.power,
+    })
+  }
   return (
     <StyledSwitch onClick={handleClick}>
-      <Toggler power={power} />
+      <Toggler power={state.power} />
     </StyledSwitch>
-  );
+  )
 }
