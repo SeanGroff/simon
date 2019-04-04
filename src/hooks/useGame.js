@@ -21,8 +21,6 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  console.log({ state })
-  console.log({ action })
   const { type, payload } = action
   switch (type) {
     case actions.TOGGLE_GAME_POWER:
@@ -88,9 +86,6 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-/**
- * @todo Pass state and dispatch via Context!
- */
 export const useGame = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
 

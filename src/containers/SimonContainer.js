@@ -1,74 +1,46 @@
-// @flow
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import GameOverScreen from '../components/GameOverScreen';
-import Simon from '../components/Simon';
-import { restartGameThunk } from '../redux/modules/game';
+import GameOverScreen from '../components/GameOverScreen'
+import Simon from '../components/Simon'
+import { restartGameThunk } from '../redux/modules/game'
+import { GameContext } from '../context/Game'
+import { useGame } from '../hooks/useGame'
 
-type Props = {
-  restart(): any,
-  gameOver: boolean,
-  counter: ?number,
-};
+/**
+ *
+ * @todo Refactor so GameOverScreen uses state from Context.Provider!
+ */
+const SimonContainer = ({ counter, gameOver, restartGameThunk }) => {
+  const victorious = getIsVictorious(counter)
 
-type State = {
-  victorious: boolean,
-  gameOver: boolean,
-};
+  if (victorious || gameOver) {
+    return (
+      <GameOverScreen
+        close={restartGameThunk}
+        victorious={victorious}
+        score={counter}
+      />
+    )
+  }
+
+  return (
+    <GameContext.Provider value={useGame()}>
+      <Simon />
+    </GameContext.Provider>
+  )
+}
+
+function getIsVictorious(counter) {
+  return counter === 21
+}
 
 const mapStateToProps = state => ({
   gameOver: state.game.gameOver,
   counter: state.game.counter,
-});
+})
 
-const mapDispatchToProps = (dispatch: *) => ({
-  restart: () => dispatch(restartGameThunk()),
-});
-
-class SimonContainer extends Component<Props, State> {
-  state = {
-    victorious: false,
-    gameOver: false,
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.gameOver !== this.props.gameOver && this.props.gameOver) {
-      this.setState(prevState => ({
-        ...prevState,
-        gameOver: true,
-      }));
-    }
-    if (prevProps.counter !== this.props.counter && this.props.counter === 21) {
-      this.setState(() => ({
-        ...prevState,
-        victorious: true,
-      }));
-    }
-  }
-
-  handleClick = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      victorious: false,
-      gameOver: false,
-    }));
-    this.props.restart();
-  };
-
-  render() {
-    const { counter } = this.props;
-    const { victorious, gameOver } = this.state;
-    return victorious || gameOver ? (
-      <GameOverScreen
-        close={this.handleClick}
-        victorious={victorious}
-        score={counter}
-      />
-    ) : (
-      <Simon />
-    );
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SimonContainer);
+export default connect(
+  mapStateToProps,
+  { restartGameThunk }
+)(SimonContainer)

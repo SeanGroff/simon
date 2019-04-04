@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useGame } from '../hooks/useGame'
+import { GameContext } from '../context/Game'
 
 const StyledSwitch = styled.div`
   width: 40px;
@@ -24,17 +24,21 @@ const Toggler = styled.div`
   transition: left 0.1s ease-out;
 `
 
-export default function OnOffSwitch() {
-  const [state, dispatch, actions] = useGame()
+const OnOffSwitch = () => {
+  const [{ power }, dispatch, actions] = React.useContext(GameContext)
+
   const handleClick = () => {
     dispatch({
       type: actions.TOGGLE_GAME_POWER,
-      power: !state.power,
+      power: !power,
     })
   }
+
   return (
     <StyledSwitch onClick={handleClick}>
-      <Toggler power={state.power} />
+      <Toggler power={power} />
     </StyledSwitch>
   )
 }
+
+export default OnOffSwitch

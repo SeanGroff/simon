@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useGame } from '../hooks/useGame'
+import { GameContext } from '../context/Game'
 
 const StyledCounter = styled.div`
   display: flex;
@@ -15,11 +15,13 @@ const StyledCounter = styled.div`
   color: ${({ power }) => (power ? '#DC0D29' : '#430710')};
 `
 
-export default function Counter() {
-  const [state] = useGame()
+const Counter = () => {
+  const [{ counter, gameOver, power }] = React.useContext(GameContext)
   return (
-    <StyledCounter power={state.power}>
-      {state.gameOver ? 'X' : state.counter || '--'}
+    <StyledCounter power={power}>
+      {gameOver ? 'X' : counter || '--'}
     </StyledCounter>
   )
 }
+
+export default Counter

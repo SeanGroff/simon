@@ -1,20 +1,9 @@
-// @flow
 import React from 'react'
 import styled from 'styled-components'
 import Counter from '../components/Counter'
 import StartStrict from '../containers/StartStrictContainer'
 import OnOffSwitch from '../components/OnOffSwitch'
-
-type Props = {
-  power: boolean,
-  counter: number,
-  strictMode: boolean,
-}
-
-type BoxModelProps = {
-  hasMargin?: boolean,
-  hasPadding?: boolean,
-}
+import { GameContext } from '../context/Game'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -74,10 +63,8 @@ const ButtonWrapper = styled.span`
 const Label = styled.label`
   font-size: 14px;
   color: #222222;
-  margin: ${({ hasMargin }: BoxModelProps): string =>
-    hasMargin ? 'auto 5px 0 5px' : '0'};
-  padding: ${({ hasPadding }: BoxModelProps): string =>
-    hasPadding ? '0 0 5px 0' : '0'};
+  margin: ${({ hasMargin }) => (hasMargin ? 'auto 5px 0 5px' : '0')};
+  padding: ${({ hasPadding }) => (hasPadding ? '0 0 5px 0' : '0')};
   text-transform: capitalize;
   text-align: center;
 `
@@ -93,7 +80,9 @@ const StrictLight = styled.span`
   transition: background 0.2s linear;
 `
 
-export default function CenterConsole({ power, counter, strictMode }: Props) {
+const CenterConsole = () => {
+  const [{ power, counter, strictMode }] = React.useContext(GameContext)
+
   return (
     <Wrapper>
       <TopHalf>
@@ -124,3 +113,5 @@ export default function CenterConsole({ power, counter, strictMode }: Props) {
     </Wrapper>
   )
 }
+
+export default CenterConsole

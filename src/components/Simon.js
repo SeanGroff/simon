@@ -1,9 +1,8 @@
-// @flow
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import Lights from '../containers/LightsContainer';
-import CenterConsole from '../containers/CenterConsoleContainer';
+import Lights from '../containers/LightsContainer'
+import CenterConsole from '../components/CenterConsole'
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +11,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background: DodgerBlue;
-`;
+`
 
 const BoardWrapper = styled.div`
   display: flex;
@@ -24,9 +23,9 @@ const BoardWrapper = styled.div`
   width: 472px;
   height: 472px;
   position: relative;
-`;
+`
 
-export default function Simon(props: any) {
+const Simon = () => {
   return (
     <Wrapper>
       <BoardWrapper>
@@ -34,5 +33,7 @@ export default function Simon(props: any) {
         <CenterConsole />
       </BoardWrapper>
     </Wrapper>
-  );
+  )
 }
+
+export default Simon
